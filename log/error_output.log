@@ -1,0 +1,197 @@
+2023-12-15 22:08:28,556 ERROR __main__ The `bbox` coordinate values should be within 0-1000 range.
+2023-12-15 22:25:13,644 ERROR __main__ [WinError 3] The system cannot find the path specified: '{imag_path}'
+2023-12-15 22:27:05,205 ERROR __main__ name 'keras_ocr' is not defined
+2023-12-15 22:35:49,620 ERROR __main__ 'bboxes'
+2023-12-15 22:39:15,225 ERROR __main__ 'bboxes'
+2023-12-16 01:01:21,726 ERROR __main__ name 'requests' is not defined
+2023-12-16 01:03:33,968 ERROR __main__ name 'requests' is not defined
+2023-12-16 01:08:14,487 ERROR __main__ name 'requests' is not defined
+2023-12-16 01:09:30,329 ERROR __main__ name 'requests' is not defined
+2023-12-16 01:10:18,781 ERROR __main__ name 'requests' is not defined
+2023-12-16 01:12:35,305 ERROR __main__ name 'tsv_output_path' is not defined
+2023-12-16 01:13:41,929 ERROR __main__ name 'tsv_output_path' is not defined
+2023-12-16 01:29:13,998 ERROR __main__ The `bbox` coordinate values should be within 0-1000 range.
+2023-12-16 20:52:33,964 ERROR __main__ [WinError 3] The system cannot find the path specified: 'uploads'
+2023-12-17 18:38:42,915 ERROR __main__ 'NoneType' object is not iterable
+2023-12-17 18:40:35,893 ERROR __main__ 'NoneType' object is not iterable
+2023-12-18 20:18:55,934 ERROR __main__ 'NoneType' object is not iterable
+2023-12-18 20:18:56,942 ERROR __main__ 'NoneType' object is not iterable
+2023-12-18 22:30:50,612 ERROR __main__ 'NoneType' object is not iterable
+2023-12-18 22:31:04,074 ERROR __main__ 'NoneType' object is not iterable
+2023-12-18 23:12:27,319 ERROR __main__ 'NoneType' object is not iterable
+2023-12-18 23:12:44,712 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 01:18:35,983 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 01:18:44,462 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 10:04:44,885 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 11:47:51,529 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 11:48:20,112 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 17:19:14,949 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 17:19:25,155 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 17:22:34,256 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 17:22:41,194 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 22:57:31,887 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 22:57:54,460 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 22:59:23,386 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 22:59:37,214 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 23:03:47,802 ERROR __main__ 'NoneType' object is not iterable
+2023-12-19 23:03:59,489 ERROR __main__ 'NoneType' object is not iterable
+2023-12-20 00:55:44,721 ERROR __main__ 'NoneType' object is not iterable
+2023-12-20 00:58:50,122 ERROR __main__ 'NoneType' object is not iterable
+2024-01-03 23:14:33,798 ERROR __main__ clean_extracted_output() missing 1 required positional argument: 'image_path'
+2024-01-03 23:14:47,884 ERROR __main__ clean_extracted_output() missing 1 required positional argument: 'image_path'
+2024-01-03 23:19:38,657 ERROR __main__ clean_extracted_output() missing 1 required positional argument: 'image_path'
+2024-01-03 23:19:46,901 ERROR __main__ clean_extracted_output() missing 1 required positional argument: 'image_path'
+2024-01-03 23:22:34,992 ERROR __main__ clean_extracted_output() missing 1 required positional argument: 'image_path'
+2024-01-03 23:22:48,001 ERROR __main__ clean_extracted_output() missing 1 required positional argument: 'image_path'
+2024-01-05 12:15:46,837 ERROR __main__ 'NoneType' object is not iterable
+2024-01-05 12:17:43,363 ERROR __main__ 'NoneType' object is not iterable
+2024-01-05 12:24:05,514 ERROR __main__ 'NoneType' object is not iterable
+2024-01-05 12:27:29,989 ERROR __main__ 'NoneType' object is not iterable
+2024-01-05 12:28:41,450 ERROR __main__ 'NoneType' object is not iterable
+2024-01-05 12:32:52,595 ERROR __main__ 'NoneType' object is not iterable
+2024-01-05 13:53:02,018 ERROR __main__ 'NoneType' object is not iterable
+2024-01-05 14:05:21,728 ERROR __main__ 'NoneType' object is not iterable
+2024-01-05 20:38:28,390 ERROR __main__ 'NoneType' object is not iterable
+2024-01-05 20:38:46,926 ERROR __main__ 'NoneType' object is not iterable
+2024-02-05 22:07:24,636 ERROR __main__ 'ModelHandler' object has no attribute 'handle'
+2024-02-05 22:07:35,496 ERROR __main__ 'ModelHandler' object has no attribute 'handle'
+2024-02-05 22:20:43,227 ERROR __main__ 'ModelHandler' object has no attribute 'handle'
+2024-02-05 22:20:43,336 ERROR __main__ 'ModelHandler' object has no attribute 'handle'
+2024-02-11 22:09:51,699 ERROR __main__ string indices must be integers, not 'str'
+2024-02-11 22:09:52,871 ERROR __main__ string indices must be integers, not 'str'
+2024-02-11 22:18:29,791 ERROR __main__ 0
+2024-02-11 22:18:30,237 ERROR __main__ 0
+2024-02-11 22:57:32,246 ERROR __main__ string indices must be integers, not 'str'
+2024-02-11 22:57:34,137 ERROR __main__ string indices must be integers, not 'str'
+2024-02-11 23:07:26,326 ERROR __main__ 'NoneType' object is not iterable
+2024-02-11 23:07:26,685 ERROR __main__ 'NoneType' object is not iterable
+2024-02-11 23:19:56,814 ERROR __main__ [Errno 2] No such file or directory: 'outputs/LayoutlMV3InferenceOutput_0.json'
+2024-02-11 23:19:57,705 ERROR __main__ [Errno 2] No such file or directory: 'outputs/LayoutlMV3InferenceOutput_0.json'
+2024-02-11 23:27:11,537 ERROR __main__ [Errno 2] No such file or directory: 'outputs/LayoutlMV3InferenceOutput_0.json'
+2024-02-11 23:27:11,756 ERROR __main__ [Errno 2] No such file or directory: 'outputs/LayoutlMV3InferenceOutput_0.json'
+2024-02-12 00:21:48,656 ERROR __main__ name 'image_path' is not defined
+2024-02-12 08:26:33,701 ERROR app unsupported operand type(s) for +: 'NoneType' and 'str'
+2024-02-12 08:26:33,704 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 08:26:33] "[32mGET /run_inference HTTP/1.1[0m" 302 -
+2024-02-12 08:26:33,762 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 08:26:33] "GET /create_csv HTTP/1.1" 200 -
+2024-02-12 08:26:34,307 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 08:26:34] "[33mGET /get_data HTTP/1.1[0m" 404 -
+2024-02-12 08:39:52,998 ERROR app unsupported operand type(s) for +: 'NoneType' and 'str'
+2024-02-12 08:39:53,001 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 08:39:53] "[32mGET /run_inference HTTP/1.1[0m" 302 -
+2024-02-12 08:39:53,035 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 08:39:53] "GET /create_csv HTTP/1.1" 200 -
+2024-02-12 08:39:53,589 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 08:39:53] "[33mGET /get_data HTTP/1.1[0m" 404 -
+2024-02-12 11:00:14,343 ERROR app [Errno 2] No such file or directory: 'temp/labeled/LayoutlMV3InferenceOutput_0.json'
+2024-02-12 11:00:14,359 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 11:00:14] "GET /run_inference HTTP/1.1" 200 -
+2024-02-12 11:00:14,900 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 11:00:14] "[33mGET /get_data HTTP/1.1[0m" 404 -
+2024-02-12 11:06:54,109 ERROR app [Errno 2] No such file or directory: 'temp/labeled/LayoutlMV3InferenceOutput_0.json'
+2024-02-12 11:06:54,109 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 11:06:54] "GET /run_inference HTTP/1.1" 200 -
+2024-02-12 11:06:54,664 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 11:06:54] "[33mGET /get_data HTTP/1.1[0m" 404 -
+2024-02-12 11:21:29,642 ERROR app [Errno 2] No such file or directory: 'labeled/LayoutlMV3InferenceOutput_0.json'
+2024-02-12 11:21:29,657 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 11:21:29] "GET /run_inference HTTP/1.1" 200 -
+2024-02-12 11:21:30,234 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 11:21:30] "[33mGET /get_data HTTP/1.1[0m" 404 -
+2024-02-12 15:22:39,701 ERROR app 'NoneType' object is not subscriptable
+2024-02-12 15:22:39,779 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:22:39] "[32mGET /run_inference HTTP/1.1[0m" 302 -
+2024-02-12 15:22:40,029 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:22:40] "[35m[1mGET /create_csv HTTP/1.1[0m" 500 -
+2024-02-12 15:22:41,814 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:22:41] "[33mGET /get_data HTTP/1.1[0m" 404 -
+2024-02-12 15:33:48,045 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:48] "GET / HTTP/1.1" 200 -
+2024-02-12 15:33:49,469 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:49] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+2024-02-12 15:33:49,547 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:49] "[36mGET /static/css/animate.css HTTP/1.1[0m" 304 -
+2024-02-12 15:33:49,632 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:49] "[36mGET /static/css/color.css HTTP/1.1[0m" 304 -
+2024-02-12 15:33:49,766 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:49] "[36mGET /static/css/font-awesome.min.css HTTP/1.1[0m" 304 -
+2024-02-12 15:33:49,959 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,049 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,109 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/images/uplogo.gif HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,134 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/js/wow.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,184 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/js/jquery.1.8.3.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,243 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/js/featherlight.gallery.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,360 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/js/featherlight.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,585 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/js/jquery.enllax.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,709 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/js/jquery.scrollUp.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,752 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[33mGET /static/static/js/jquery.stickyNavbar.min.js HTTP/1.1[0m" 404 -
+2024-02-12 15:33:50,769 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/js/jquery.easing.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,816 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/js/jquery.waypoints.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,868 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/js/images-loaded.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,898 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/js/lightbox.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:33:50,912 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:33:50] "[36mGET /static/js/site.js HTTP/1.1[0m" 304 -
+2024-02-12 15:34:20,927 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:34:20] "[33mGET /static/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1[0m" 404 -
+2024-02-12 15:34:20,969 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:34:20] "[33mGET /static/fonts/fontawesome-webfont.woff?v=4.7.0 HTTP/1.1[0m" 404 -
+2024-02-12 15:34:21,014 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:34:21] "[33mGET /static/fonts/fontawesome-webfont.ttf?v=4.7.0 HTTP/1.1[0m" 404 -
+2024-02-12 15:34:43,540 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:34:43] "[36mGET /static/images/favicon.ico HTTP/1.1[0m" 304 -
+2024-02-12 15:34:57,852 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:34:57] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2024-02-12 15:34:58,580 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:34:58] "GET /predict/%5B'receipt_4.jpg'%5D HTTP/1.1" 200 -
+2024-02-12 15:34:59,230 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:34:59] "[33mGET /predict/css/animate.css HTTP/1.1[0m" 404 -
+2024-02-12 15:34:59,297 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:34:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-02-12 15:34:59,413 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:34:59] "[36mGET /static/css/color.css HTTP/1.1[0m" 304 -
+2024-02-12 15:34:59,563 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:34:59] "[36mGET /static/css/font-awesome.min.css HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,080 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/js/jquery.1.8.3.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,225 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,270 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/js/wow.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,374 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/js/featherlight.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,455 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/js/featherlight.gallery.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,518 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/js/jquery.enllax.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,681 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/js/jquery.scrollUp.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,747 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/js/jquery.easing.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,780 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/js/jquery.stickyNavbar.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,864 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/js/jquery.waypoints.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,898 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/js/images-loaded.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,914 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/js/lightbox.min.js HTTP/1.1[0m" 304 -
+2024-02-12 15:35:00,935 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:00] "[36mGET /static/js/site.js HTTP/1.1[0m" 304 -
+2024-02-12 15:35:01,331 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:35:01] "[36mGET /static/images/favicon.ico HTTP/1.1[0m" 304 -
+2024-02-12 15:38:18,229 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:38:18] "[32mGET /run_inference HTTP/1.1[0m" 302 -
+2024-02-12 15:38:18,825 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:38:18] "[35m[1mGET /create_csv HTTP/1.1[0m" 204 -
+2024-02-12 15:38:19,453 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 15:38:19] "GET /get_data HTTP/1.1" 200 -
+2024-02-12 16:17:35,300 ERROR app 'NoneType' object is not iterable
+2024-02-12 16:17:35,300 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:17:35] "[32mGET /run_inference HTTP/1.1[0m" 302 -
+2024-02-12 16:17:35,383 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:17:35] "[35m[1mGET /create_csv HTTP/1.1[0m" 204 -
+2024-02-12 16:17:35,949 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:17:35] "GET /get_data HTTP/1.1" 200 -
+2024-02-12 16:18:09,159 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:09] "GET / HTTP/1.1" 200 -
+2024-02-12 16:18:09,415 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-02-12 16:18:09,546 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:09] "[36mGET /static/css/font-awesome.min.css HTTP/1.1[0m" 304 -
+2024-02-12 16:18:09,656 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:09] "[36mGET /static/css/color.css HTTP/1.1[0m" 304 -
+2024-02-12 16:18:09,686 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:09] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2024-02-12 16:18:09,703 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:09] "GET /static/css/animate.css HTTP/1.1" 200 -
+2024-02-12 16:18:09,728 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:09] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+2024-02-12 16:18:09,871 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:09] "GET /static/images/uplogo.gif HTTP/1.1" 200 -
+2024-02-12 16:18:09,925 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:09] "[36mGET /static/js/jquery.1.8.3.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:09,974 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:09] "[36mGET /static/js/wow.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:10,056 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:10] "[36mGET /static/js/featherlight.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:10,075 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:10] "[36mGET /static/js/featherlight.gallery.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:10,192 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:10] "[36mGET /static/js/jquery.enllax.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:10,444 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:10] "[36mGET /static/js/jquery.scrollUp.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:10,499 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:10] "[36mGET /static/js/jquery.easing.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:10,534 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:10] "[33mGET /static/static/js/jquery.stickyNavbar.min.js HTTP/1.1[0m" 404 -
+2024-02-12 16:18:10,596 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:10] "[36mGET /static/js/jquery.waypoints.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:10,768 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:10] "[36mGET /static/js/images-loaded.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:10,790 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:10] "[36mGET /static/js/lightbox.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:10,940 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:10] "[36mGET /static/js/site.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:15,475 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:15] "[36mGET /static/images/favicon.ico HTTP/1.1[0m" 304 -
+2024-02-12 16:18:35,183 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:35] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2024-02-12 16:18:35,889 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:35] "GET /predict/%5B'sample_grace.jpg',%20'sample1_711.jpg'%5D HTTP/1.1" 200 -
+2024-02-12 16:18:36,090 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,115 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/css/color.css HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,145 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/css/font-awesome.min.css HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,241 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,251 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[33mGET /predict/css/animate.css HTTP/1.1[0m" 404 -
+2024-02-12 16:18:36,296 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/js/jquery.1.8.3.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,347 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/js/wow.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,436 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/js/featherlight.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,488 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/js/jquery.stickyNavbar.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,512 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/js/featherlight.gallery.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,529 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/js/jquery.enllax.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,579 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/js/jquery.scrollUp.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,635 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/js/jquery.easing.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,676 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/js/jquery.waypoints.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,719 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/js/site.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,743 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/js/images-loaded.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:36,785 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:36] "[36mGET /static/js/lightbox.min.js HTTP/1.1[0m" 304 -
+2024-02-12 16:18:37,120 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:18:37] "[36mGET /static/images/favicon.ico HTTP/1.1[0m" 304 -
+2024-02-12 16:21:17,090 ERROR app 'NoneType' object is not iterable
+2024-02-12 16:21:17,100 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:21:17] "[32mGET /run_inference HTTP/1.1[0m" 302 -
+2024-02-12 16:21:17,131 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:21:17] "[35m[1mGET /create_csv HTTP/1.1[0m" 500 -
+2024-02-12 16:21:17,662 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 16:21:17] "[33mGET /get_data HTTP/1.1[0m" 404 -
+2024-02-12 17:02:28,396 ERROR app 'NoneType' object is not iterable
+2024-02-12 17:02:28,396 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 17:02:28] "[32mGET /run_inference HTTP/1.1[0m" 302 -
+2024-02-12 17:02:28,447 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 17:02:28] "[35m[1mGET /create_csv HTTP/1.1[0m" 500 -
+2024-02-12 17:02:29,128 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 17:02:29] "[33mGET /get_data HTTP/1.1[0m" 404 -
+2024-02-12 17:33:50,964 ERROR app 'NoneType' object is not iterable
+2024-02-12 17:33:50,964 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 17:33:50] "[32mGET /run_inference HTTP/1.1[0m" 302 -
+2024-02-12 17:33:50,980 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 17:33:50] "[35m[1mGET /create_csv HTTP/1.1[0m" 500 -
+2024-02-12 17:33:51,501 INFO werkzeug 127.0.0.1 - - [12/Feb/2024 17:33:51] "[33mGET /get_data HTTP/1.1[0m" 404 -

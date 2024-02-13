@@ -1,0 +1,548 @@
+{
+    "output": [
+        {
+            "text": "30.00V",
+            "label": "PRICE",
+            "words": [
+                {
+                    "id": 280,
+                    "box": [
+                        580.0,
+                        986.0,
+                        713.0,
+                        1032.0
+                    ],
+                    "text": "30.00V"
+                }
+            ]
+        },
+        {
+            "text": "30.00",
+            "label": "TOTAL",
+            "words": [
+                {
+                    "id": 287,
+                    "box": [
+                        603.0,
+                        1093.0,
+                        716.0,
+                        1141.0
+                    ],
+                    "text": "30.00"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTNAME",
+            "text": "7",
+            "words": [
+                {
+                    "id": 206,
+                    "box": [
+                        219.0,
+                        43.0,
+                        623.0,
+                        127.0
+                    ],
+                    "text": "7"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTNAME",
+            "text": "-",
+            "words": [
+                {
+                    "id": 207,
+                    "box": [
+                        219.0,
+                        43.0,
+                        623.0,
+                        127.0
+                    ],
+                    "text": "-"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTNAME",
+            "text": "ELEVEN",
+            "words": [
+                {
+                    "id": 208,
+                    "box": [
+                        219.0,
+                        43.0,
+                        623.0,
+                        127.0
+                    ],
+                    "text": "ELEVEN"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTNAME",
+            "text": "\u00ae",
+            "words": [
+                {
+                    "id": 209,
+                    "box": [
+                        219.0,
+                        43.0,
+                        623.0,
+                        127.0
+                    ],
+                    "text": "\u00ae"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": "Poblacione",
+            "words": [
+                {
+                    "id": 231,
+                    "box": [
+                        113.0,
+                        426.0,
+                        335.0,
+                        474.0
+                    ],
+                    "text": "Poblacione"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": "Leon",
+            "words": [
+                {
+                    "id": 232,
+                    "box": [
+                        341.0,
+                        426.0,
+                        461.0,
+                        474.0
+                    ],
+                    "text": "Leon"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": ",",
+            "words": [
+                {
+                    "id": 233,
+                    "box": [
+                        341.0,
+                        426.0,
+                        461.0,
+                        474.0
+                    ],
+                    "text": ","
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": "Mollo",
+            "words": [
+                {
+                    "id": 234,
+                    "box": [
+                        467.0,
+                        426.0,
+                        622.0,
+                        474.0
+                    ],
+                    "text": "Mollo"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": ",",
+            "words": [
+                {
+                    "id": 235,
+                    "box": [
+                        467.0,
+                        426.0,
+                        622.0,
+                        474.0
+                    ],
+                    "text": ","
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": "Philippines",
+            "words": [
+                {
+                    "id": 236,
+                    "box": [
+                        242.0,
+                        476.0,
+                        478.0,
+                        520.0
+                    ],
+                    "text": "Philippines"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": "04",
+            "words": [
+                {
+                    "id": 242,
+                    "box": [
+                        114.0,
+                        626.0,
+                        333.0,
+                        671.0
+                    ],
+                    "text": "04"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": "/",
+            "words": [
+                {
+                    "id": 243,
+                    "box": [
+                        114.0,
+                        626.0,
+                        333.0,
+                        671.0
+                    ],
+                    "text": "/"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": "30",
+            "words": [
+                {
+                    "id": 244,
+                    "box": [
+                        114.0,
+                        626.0,
+                        333.0,
+                        671.0
+                    ],
+                    "text": "30"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": "/",
+            "words": [
+                {
+                    "id": 245,
+                    "box": [
+                        114.0,
+                        626.0,
+                        333.0,
+                        671.0
+                    ],
+                    "text": "/"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": "2023",
+            "words": [
+                {
+                    "id": 246,
+                    "box": [
+                        114.0,
+                        626.0,
+                        333.0,
+                        671.0
+                    ],
+                    "text": "2023"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": "(",
+            "words": [
+                {
+                    "id": 247,
+                    "box": [
+                        339.0,
+                        626.0,
+                        446.0,
+                        671.0
+                    ],
+                    "text": "("
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": "Sun",
+            "words": [
+                {
+                    "id": 248,
+                    "box": [
+                        339.0,
+                        626.0,
+                        446.0,
+                        671.0
+                    ],
+                    "text": "Sun"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": ")",
+            "words": [
+                {
+                    "id": 249,
+                    "box": [
+                        339.0,
+                        626.0,
+                        446.0,
+                        671.0
+                    ],
+                    "text": ")"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONTIME",
+            "text": "18",
+            "words": [
+                {
+                    "id": 250,
+                    "box": [
+                        451.0,
+                        625.0,
+                        628.0,
+                        670.0
+                    ],
+                    "text": "18"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONTIME",
+            "text": ":",
+            "words": [
+                {
+                    "id": 251,
+                    "box": [
+                        451.0,
+                        625.0,
+                        628.0,
+                        670.0
+                    ],
+                    "text": ":"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONTIME",
+            "text": "27",
+            "words": [
+                {
+                    "id": 252,
+                    "box": [
+                        451.0,
+                        625.0,
+                        628.0,
+                        670.0
+                    ],
+                    "text": "27"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONTIME",
+            "text": ":",
+            "words": [
+                {
+                    "id": 253,
+                    "box": [
+                        451.0,
+                        625.0,
+                        628.0,
+                        670.0
+                    ],
+                    "text": ":"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONTIME",
+            "text": "49",
+            "words": [
+                {
+                    "id": 254,
+                    "box": [
+                        451.0,
+                        625.0,
+                        628.0,
+                        670.0
+                    ],
+                    "text": "49"
+                }
+            ]
+        },
+        {
+            "label": "RECEIPTNUMBER",
+            "text": "#",
+            "words": [
+                {
+                    "id": 256,
+                    "box": [
+                        133.0,
+                        732.0,
+                        306.0,
+                        777.0
+                    ],
+                    "text": "#"
+                }
+            ]
+        },
+        {
+            "label": "RECEIPTNUMBER",
+            "text": "2480571",
+            "words": [
+                {
+                    "id": 257,
+                    "box": [
+                        133.0,
+                        732.0,
+                        306.0,
+                        777.0
+                    ],
+                    "text": "2480571"
+                }
+            ]
+        },
+        {
+            "label": "ITEMS",
+            "text": "SEL",
+            "words": [
+                {
+                    "id": 276,
+                    "box": [
+                        32.0,
+                        990.0,
+                        94.0,
+                        1035.0
+                    ],
+                    "text": "SEL"
+                }
+            ]
+        },
+        {
+            "label": "ITEMS",
+            "text": "CRNTOCONE",
+            "words": [
+                {
+                    "id": 277,
+                    "box": [
+                        100.0,
+                        990.0,
+                        286.0,
+                        1035.0
+                    ],
+                    "text": "CRNTOCONE"
+                }
+            ]
+        },
+        {
+            "label": "ITEMS",
+            "text": "105M",
+            "words": [
+                {
+                    "id": 278,
+                    "box": [
+                        291.0,
+                        990.0,
+                        397.0,
+                        1035.0
+                    ],
+                    "text": "105M"
+                }
+            ]
+        },
+        {
+            "label": "ITEMS",
+            "text": ".",
+            "words": [
+                {
+                    "id": 279,
+                    "box": [
+                        291.0,
+                        990.0,
+                        397.0,
+                        1035.0
+                    ],
+                    "text": "."
+                }
+            ]
+        },
+        {
+            "label": "VATTAX",
+            "text": "3.21",
+            "words": [
+                {
+                    "id": 296,
+                    "box": [
+                        622.0,
+                        1347.0,
+                        710.0,
+                        1397.0
+                    ],
+                    "text": "3.21"
+                }
+            ]
+        },
+        {
+            "label": "VATTAX",
+            "text": "0,00",
+            "words": [
+                {
+                    "id": 297,
+                    "box": [
+                        622.0,
+                        1399.0,
+                        716.0,
+                        1447.0
+                    ],
+                    "text": "0,00"
+                }
+            ]
+        },
+        {
+            "label": "VATTAX",
+            "text": "0.00",
+            "words": [
+                {
+                    "id": 298,
+                    "box": [
+                        625.0,
+                        1450.0,
+                        716.0,
+                        1500.0
+                    ],
+                    "text": "0.00"
+                }
+            ]
+        }
+    ]
+}

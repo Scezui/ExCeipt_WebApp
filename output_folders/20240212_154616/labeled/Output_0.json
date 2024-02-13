@@ -1,0 +1,404 @@
+{
+    "output": [
+        {
+            "text": "01053735",
+            "label": "RECEIPTNUMBER",
+            "words": [
+                {
+                    "id": 59,
+                    "box": [
+                        520.0,
+                        555.0,
+                        831.0,
+                        590.0
+                    ],
+                    "text": "01053735"
+                }
+            ]
+        },
+        {
+            "text": "EQDryTravelM18",
+            "label": "ITEMS",
+            "words": [
+                {
+                    "id": 63,
+                    "box": [
+                        167.0,
+                        743.0,
+                        424.0,
+                        793.0
+                    ],
+                    "text": "EQDryTravelM18"
+                }
+            ]
+        },
+        {
+            "text": "331.00",
+            "label": "PRICE",
+            "words": [
+                {
+                    "id": 67,
+                    "box": [
+                        715.0,
+                        698.0,
+                        832.0,
+                        756.0
+                    ],
+                    "text": "331.00"
+                }
+            ]
+        },
+        {
+            "text": "35.46",
+            "label": "VATTAX",
+            "words": [
+                {
+                    "id": 98,
+                    "box": [
+                        730.0,
+                        1509.0,
+                        831.0,
+                        1560.0
+                    ],
+                    "text": "35.46"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTNAME",
+            "text": "Iloilo",
+            "words": [
+                {
+                    "id": 0,
+                    "box": [
+                        268.0,
+                        120.0,
+                        386.0,
+                        167.0
+                    ],
+                    "text": "Iloilo"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTNAME",
+            "text": "Grace",
+            "words": [
+                {
+                    "id": 1,
+                    "box": [
+                        391.0,
+                        120.0,
+                        497.0,
+                        167.0
+                    ],
+                    "text": "Grace"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTNAME",
+            "text": "Pharmacy",
+            "words": [
+                {
+                    "id": 2,
+                    "box": [
+                        503.0,
+                        120.0,
+                        652.0,
+                        167.0
+                    ],
+                    "text": "Pharmacy"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": "C",
+            "words": [
+                {
+                    "id": 3,
+                    "box": [
+                        101.0,
+                        167.0,
+                        164.0,
+                        210.0
+                    ],
+                    "text": "C"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": "&",
+            "words": [
+                {
+                    "id": 4,
+                    "box": [
+                        101.0,
+                        167.0,
+                        164.0,
+                        210.0
+                    ],
+                    "text": "&"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": "J",
+            "words": [
+                {
+                    "id": 5,
+                    "box": [
+                        101.0,
+                        167.0,
+                        164.0,
+                        210.0
+                    ],
+                    "text": "J"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": "Building",
+            "words": [
+                {
+                    "id": 6,
+                    "box": [
+                        169.0,
+                        167.0,
+                        332.0,
+                        209.0
+                    ],
+                    "text": "Building"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": "Jalandoni",
+            "words": [
+                {
+                    "id": 7,
+                    "box": [
+                        337.0,
+                        167.0,
+                        510.0,
+                        209.0
+                    ],
+                    "text": "Jalandoni"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": "Extension",
+            "words": [
+                {
+                    "id": 8,
+                    "box": [
+                        516.0,
+                        167.0,
+                        695.0,
+                        209.0
+                    ],
+                    "text": "Extension"
+                }
+            ]
+        },
+        {
+            "label": "MERCHANTADDRESS",
+            "text": "Bolilao",
+            "words": [
+                {
+                    "id": 9,
+                    "box": [
+                        699.0,
+                        167.0,
+                        834.0,
+                        210.0
+                    ],
+                    "text": "Bolilao"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": "08",
+            "words": [
+                {
+                    "id": 50,
+                    "box": [
+                        101.0,
+                        551.0,
+                        296.0,
+                        590.0
+                    ],
+                    "text": "08"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": "/",
+            "words": [
+                {
+                    "id": 51,
+                    "box": [
+                        101.0,
+                        551.0,
+                        296.0,
+                        590.0
+                    ],
+                    "text": "/"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": "12",
+            "words": [
+                {
+                    "id": 52,
+                    "box": [
+                        101.0,
+                        551.0,
+                        296.0,
+                        590.0
+                    ],
+                    "text": "12"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": "/",
+            "words": [
+                {
+                    "id": 53,
+                    "box": [
+                        101.0,
+                        551.0,
+                        296.0,
+                        590.0
+                    ],
+                    "text": "/"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONDATE",
+            "text": "2023",
+            "words": [
+                {
+                    "id": 54,
+                    "box": [
+                        101.0,
+                        551.0,
+                        296.0,
+                        590.0
+                    ],
+                    "text": "2023"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONTIME",
+            "text": "11",
+            "words": [
+                {
+                    "id": 55,
+                    "box": [
+                        301.0,
+                        551.0,
+                        403.0,
+                        590.0
+                    ],
+                    "text": "11"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONTIME",
+            "text": ":",
+            "words": [
+                {
+                    "id": 56,
+                    "box": [
+                        301.0,
+                        551.0,
+                        403.0,
+                        590.0
+                    ],
+                    "text": ":"
+                }
+            ]
+        },
+        {
+            "label": "TRANSACTIONTIME",
+            "text": "07",
+            "words": [
+                {
+                    "id": 57,
+                    "box": [
+                        301.0,
+                        551.0,
+                        403.0,
+                        590.0
+                    ],
+                    "text": "07"
+                }
+            ]
+        },
+        {
+            "label": "TOTAL",
+            "text": "331",
+            "words": [
+                {
+                    "id": 75,
+                    "box": [
+                        605.0,
+                        980.0,
+                        831.0,
+                        1038.0
+                    ],
+                    "text": "331"
+                }
+            ]
+        },
+        {
+            "label": "TOTAL",
+            "text": "-",
+            "words": [
+                {
+                    "id": 76,
+                    "box": [
+                        605.0,
+                        980.0,
+                        831.0,
+                        1038.0
+                    ],
+                    "text": "-"
+                }
+            ]
+        },
+        {
+            "label": "TOTAL",
+            "text": "00",
+            "words": [
+                {
+                    "id": 77,
+                    "box": [
+                        605.0,
+                        980.0,
+                        831.0,
+                        1038.0
+                    ],
+                    "text": "00"
+                }
+            ]
+        }
+    ]
+}
