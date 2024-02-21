@@ -72,7 +72,7 @@ def run_tesseract_on_preprocessed_image(preprocessed_image, image_path):
         image_name = image_name[:image_name.find('.')]
 
         # Create the "temp" folder if it doesn't exist
-        temp_folder = "temp"
+        temp_folder = "static/temp"
         if not os.path.exists(temp_folder):
             os.makedirs(temp_folder)
 

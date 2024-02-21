@@ -42,12 +42,51 @@
             flex: 2;
             background-color: #ddd;
             padding: 20px;
-            overflow-y: hidden;
             max-height: 100vh;
             width: 100%;
+            max-width: 100%;
             box-shadow: inset 0 15px 30px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
         }
-        
+        #canvas-container {
+            display: flex;
+            flex-wrap: wrap; /* Wrap items to next line when they exceed the container width */
+            justify-content: center; /* Center items horizontally */
+            gap: 10px; /* Add some space between images */
+            max-width: 100%; /* Ensure images don't exceed the container width */
+            margin-top: 70px;
+        }
+    
+        .image-container {
+            width: 200px; /* Set your desired width */
+            height: 300px; /* Set your desired height */
+            background-color: white; /* White background */
+            padding: 30px 30px 40px 30px; /* Add padding */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius:10px;
+        }
+        .image-container:hover{
+            transition: all 0.3s;
+            transform: translateY(1.5px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        p.images-name {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 10px;
+            margin: 5px 0 0 0 ;
+            text-align: center;
+            padding: 0;
+        }
+    
         .right-column {
             flex: 2;
             background-color: #ffffff;
@@ -103,7 +142,6 @@
         
         #canvas-container {
             position: relative;
-            overflow: hidden;
             width: 100%;
             height: 100%;
         }
@@ -164,9 +202,6 @@
         
         .receipt {
             margin: 20px 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            font: 14px;
         }
         
         .receipt1 {
@@ -176,21 +211,6 @@
         
         .receipt1 table {
             border-radius: 10px;
-        }
-        
-        .filenm {
-            padding: 1em 1.8em;
-            box-sizing: border-box;
-            border-radius: 10px;
-            display: flex;
-            transition: 0.2s background;
-            align-items: center;
-            gap: 0.6em;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            margin-right: 10px;
-            font-size: 14px;
-            font-weight: 300;
         }
         
         .receipt h1 {
@@ -206,7 +226,9 @@
             border-collapse: collapse;
             margin-bottom: 20px;
         }
-        
+        .receipt table {
+            border-radius: 10px;
+        }
         .receipt table th,
         .receipt table td {
             border: 1px solid #ccc;
@@ -216,11 +238,19 @@
         .receipt table th {
             background-color: #f0f0f0;
             text-align: left;
+            font-size:16px;
+            font-weight:500;
+            text-align:center;
         }
         
-        .receipt tfoot td {
-            text-align: right;
-            font-weight: bold;
+        .receipt table td {
+            text-align:center;
+            font-size: 14px;
+            max-width: 150px; /* Set the maximum width */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0 20px ;
         }
         
         #dataTable {
@@ -306,7 +336,9 @@
             border-radius: 10px;
             z-index: -1;
         }
-        
+        .details{
+
+        }
         .exportbutton {
             margin-right: 17px;
             box-sizing: border-box;
@@ -541,6 +573,85 @@
             width: 40%;
             height: 40%;
         }
+        .red-border {
+            border: 2px solid red;
+        }
+        
+        .green-border {
+            border: 2px solid green;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        .image-container:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltiptext {
+            font-size: 12px;
+            visibility: hidden;
+            width: 160px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 5px;
+            position: absolute;
+            z-index: 99;
+            bottom: 105%;
+            left: 50%;
+            margin-left: -80px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+        .zoomed-image-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+    
+        .zoomed-image-container img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        @media (max-width: 576px) {
+            .zoomed-image-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 45%;
+                background-color: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+            }
+        }
+        /* Optional: If you want to hide the scrollbar in Firefox */
+        scrollbar-width: none;
     </style>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 </head>
@@ -550,35 +661,25 @@
         <!-- Flash message will be displayed here -->
     </div>
     <div class="containerz">
-
         <div class="left-column">
             <button class="backbutton" id="submitButton" onclick="window.location.href='{{ url_for('index') }}'">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Back</span>
-              </button>
-            <div id="filenm">
-                <div style="display: flex; align-items: center; position: absolute; top: 0px; right: 0;">
-                    <span class="filenm">
-                            <lord-icon
-                        src="https://cdn.lordicon.com/xpgofwru.json"
-                        trigger="in"
-                        delay ="500"
-                        state="hover-file-2"
-                        colors="primary:#ff8b4a"
-                        style="width:20px;height:20px">
-                    </lord-icon>
-                    {{ old_name }}</span>
-                    </button>
-                </div>
-            </div>
-
-
+            </button>
             <div id="canvas-container">
-                <canvas id="c3"></canvas> {% if uploaded_file %}
-                <img src="{{ url_for('static', filename='uploads/' + uploaded_file) }}" id="my-image" hidden> {% else %}
-                <p>No file uploaded.</p>
+                {% if image_paths %}
+                    {% for image_path, prediction_results in predictions.items() %}
+                        <div class="image-container {% if prediction_results == 'non-receipt' %}red-border{% elif prediction_results == 'receipt' %}green-border{% endif %}">
+                            <div class="tooltiptext">Click to view fullscreen</div>
+                            <img src="{{ url_for('static', filename='temp/uploads/' + image_path) }}" id="my-image" alt="uploads" />
+                            <div class="image-name">
+                                <p class="images-name">{{image_path}}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No files uploaded.</p>
                 {% endif %}
-
             </div>
         </div>
         <div class="right-column">
@@ -597,8 +698,8 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Image Path</th>
-                        <th>Prediction</th>
+                        <th>File Name</th>
+                        <th>Prediction Result</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -607,7 +708,7 @@
                         <td>{{ image_path }}</td>
                         <td>
                             <div class="details">
-                                <div style="display: flex; align-items: center;">
+                                <div style="display: flex; align-items: center; justify-content: center;">
                                     {% if prediction_results.lower() == 'receipt' %}
                                     <lord-icon src="https://cdn.lordicon.com/lomfljuq.json" trigger="in" delay="1500" colors="primary:#16c72e" state="morph-check-in-1" style="width:25px;height:25px">
                                     </lord-icon>

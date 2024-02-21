@@ -36,7 +36,7 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 # warnings.filterwarnings("ignore", category=SourceChangeWarning)
 
 
-UPLOAD_FOLDER = 'temp/uploads'
+UPLOAD_FOLDER = 'static/temp/uploads'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
@@ -81,7 +81,7 @@ def allowed_file(filename):
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_files():
-    UPLOAD_FOLDER = 'temp/uploads'
+    UPLOAD_FOLDER = 'static/temp/uploads'
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
     if request.method == 'POST':
@@ -101,6 +101,7 @@ def upload_files():
 
 
 def make_predictions(image_paths):
+    temp = None
     try:
         # For Windows OS
         temp = pathlib.PosixPath  # Save the original state
@@ -143,8 +144,9 @@ def predict_files(filenames):
             prediction_result = make_predictions([file_path])  # Pass file_path as a list
             prediction_results.extend(prediction_result)  # Use extend to add elements of list to another list
             print(image_paths)
-    
-    return render_template('extractor.html', image_paths=image_paths, predictions=dict(zip(image_paths, prediction_results)))
+   
+    temp_folder = UPLOAD_FOLDER
+    return render_template('extractor.html', image_paths=image_paths, prediction_results = prediction_results, predictions=dict(zip(image_paths, prediction_results)))
 
     
     
@@ -173,7 +175,7 @@ def process_images(model_path: str, images_path: str) -> None:
 def run_inference():
     try:
         model_path = r"model"
-        images_path = r"temp/uploads/"
+        images_path = r"static/temp/uploads/"
         process_images(model_path, images_path)
         return redirect(url_for('create_csv'))
     except Exception as err:
@@ -207,7 +209,7 @@ from itertools import zip_longest
 def create_csv():
     try:
         # Path to the folder containing JSON files
-        json_folder_path = r"temp/labeled"  # Change this to your folder path
+        json_folder_path = r"static/temp/labeled"  # Change this to your folder path
         
         # Path to the output CSV folder
         output_folder_path = r"inferenced/csv_files"

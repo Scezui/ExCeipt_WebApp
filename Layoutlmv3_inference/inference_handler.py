@@ -191,7 +191,7 @@ class ModelHandler(object):
             inference_out_list = json.loads(inference_out)
 
             # Create the labeled directory if it doesn't exist
-            labeled_dir = 'temp/labeled'
+            labeled_dir = 'static/temp/labeled'
             os.makedirs(labeled_dir, exist_ok=True)
 
             # Loop through the list and create a new file for each JSON object

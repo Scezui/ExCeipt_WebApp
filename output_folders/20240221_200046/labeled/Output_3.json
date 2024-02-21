@@ -1,0 +1,1 @@
+{"output": [{"text": "HAN", "label": "MERCHANTNAME", "words": [{"id": 64, "box": [199.0, 207.0, 379.0, 327.0], "text": "HAN"}]}, {"text": "BITE", "label": "ITEMS", "words": [{"id": 65, "box": [394.0, 207.0, 536.0, 327.0], "text": "BITE"}]}]}
