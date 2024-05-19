@@ -18,4 +18,4 @@ WORKDIR $HOME/app
 
 COPY --chown=user . $HOME/app
 
-CMD ["gunicorn", "-b" , "0.0.0.0:7860", "app:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:7860", "--timeout", "120", "--workers", "4", "app:app"]

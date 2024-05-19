@@ -1,14 +1,18 @@
-git+https://github.com/huggingface/transformers.git
-git+https://github.com/huggingface/datasets.git
-dill<0.3.5
-seqeval
-accelerate
-flask
+transformers==4.31.0
+# git+https://github.com/huggingface/datasets.git
+dill==0.3.4
+seqeval==1.2.2
+# accelerate
+flask==2.3.3
 fastai==1.0.61
-pytesseract
-pandas
-numpy
-pillow
-tqdm
+# pytesseract==0.3.8
+pillow==9.5.0
+pandas==2.0.3
+tqdm==4.66.1
 gunicorn
 opencv-python-headless
+# transformers==4.31.0
+numpy==1.24.3
+# datasets==2.14.6
+datasets @ git+https://github.com/huggingface/datasets.git@a1e1867e932f14233244fb25713f3c94c46ff50a
+Werkzeug==2.3.7

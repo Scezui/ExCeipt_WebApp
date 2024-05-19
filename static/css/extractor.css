@@ -1,0 +1,682 @@
+
+body {
+    background-color: #ddd;
+}
+
+.containerz {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.left-column {
+    padding-top: 100px;
+    flex: 2;
+    background-color: #ddd;
+    padding: 20px;
+    max-height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: inset 0 15px 30px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+#canvas-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Wrap items to next line when they exceed the container width */
+    justify-content: center;
+    /* Center items horizontally */
+    gap: 10px;
+    /* Add some space between images */
+    max-width: 100%;
+    /* Ensure images don't exceed the container width */
+    margin-top: 70px;
+}
+
+.image-container {
+    width: 200px;
+    /* Set your desired width */
+    height: 300px;
+    /* Set your desired height */
+    background-color: white;
+    /* White background */
+    padding: 30px 30px 40px 30px;
+    /* Add padding */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.image-container:hover {
+    transition: all 0.3s;
+    transform: translateY(1.5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+p.images-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 10px;
+    margin: 5px 0 0 0;
+    text-align: center;
+    padding: 0;
+}
+
+.right-column {
+    flex: 2;
+    background-color: #ffffff;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+.backbutton {
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: var(--secondary-color);
+    padding: 1em 1.8em;
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    z-index: 999;
+}
+
+.backbutton span {
+    text-decoration: none;
+    color: black;
+    font-family: 'Poppins', sans-serif, Arial, Helvetica;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.backbutton:hover {
+    background: linear-gradient(45deg, #FF6347, #FFA07A);
+    transition: all .3s ease-in-out;
+}
+
+.backbutton:hover span {
+    color: white;
+    transition: all .3s ease-in-out;
+}
+
+.backbutton:hover i {
+    color: white;
+    transition: all .3s ease-in-out;
+}
+
+.left-column h1 {
+    padding-top: 45px;
+}
+
+#canvas-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#canvas {
+    cursor: grab;
+    user-select: none;
+}
+
+#upload-input {
+    margin-top: 10px;
+    object-position: center;
+}
+
+.bordered-table {
+    justify-content: center;
+    display: flex;
+    padding: 0px 30px;
+}
+
+.bordered-table tbody td.full-width {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.bordered-table tbody td.full-width .label {
+    width: 100px;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.bordered-table tbody td .full-width input {
+    flex-grow: 1;
+}
+
+.bordered-table tbody td.full-width {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+}
+
+.bordered-table tbody td.full-width .label {
+    justify-self: end;
+}
+
+#logox {
+    display: flex;
+    justify-content: center;
+}
+
+#logox img {
+    position: relative;
+    object-position: center;
+    width: 25%;
+    height: 25%;
+    padding: 10px 10px 10px 10px;
+}
+
+.receipt {
+    margin: 20px 20px;
+}
+
+.receipt1 {
+    margin: 20px 20px;
+    font: 14px;
+}
+
+.receipt1 table {
+    border-radius: 10px;
+}
+
+.receipt h1 {
+    text-align: center;
+}
+
+.receipt .details {
+    margin: 0px 0px 0px 15px;
+}
+
+.receipt table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.receipt table {
+    border-radius: 10px;
+}
+
+.receipt table th,
+.receipt table td {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.receipt table th {
+    background-color: #f0f0f0;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.receipt table td {
+    text-align: center;
+    font-size: 14px;
+    max-width: 150px;
+    /* Set the maximum width */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 20px;
+}
+
+#dataTable {
+    border-radius: 10px;
+    border-collapse: collapse;
+    width: 100%;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    overflow-x: auto;
+}
+
+#receiptdiv {
+    display: none;
+}
+
+#dataTable th,
+#dataTable td {
+    font-size: 12px;
+    text-align: center;
+    padding: 3px;
+}
+
+#downloadbutton {
+    display: none;
+}
+
+#loadingSpinner {
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #FF8B4A;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    display: none;
+    /* Hide initially */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#uploadbutton:disabled {
+    cursor: not-allowed;
+    background-color: #dddddd;
+}
+
+.labels {
+    margin: 0 0 0 20px;
+    font-weight: 500;
+}
+
+.labels p {
+    font-size: 14px;
+    padding-top: 8px;
+    line-height: 5px;
+    color: ccc;
+    padding: 8px 0 0 0;
+    text-align: left;
+}
+
+#filenm {
+    position: relative;
+    z-index: 999;
+}
+
+.valid {
+    padding-left: 8px;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.details1 {
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.details {}
+
+.exportbutton {
+    margin-right: 17px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 1em 1.8em;
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: 400;
+    background: linear-gradient(45deg, #FF6347, #FFA07A);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.exportbutton:hover {
+    border: 2px solid #FF8B4A;
+    background: #f5f5f5;
+    color: #000;
+    transition: all .3s ease-in-out;
+}
+
+@media (max-width: 1024px) {
+    .filenm {
+        border-radius: 10px;
+        gap: 0.3em;
+        font-size: 9px;
+        padding: 9px 11px;
+        margin: 0;
+    }
+
+    .filenm span {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .backbutton span {
+        font-size: 9px;
+    }
+
+    .backbutton {
+        padding: 12px 14px;
+        border-radius: 10px;
+    }
+
+    .receipt {
+        margin: 15px 15px;
+    }
+
+    p {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    p.desc {
+        font-size: 8px;
+        text-align: left;
+    }
+
+    .labels {
+        text-align: left;
+    }
+
+    .labels p {
+        padding: 8px 0 8px 0;
+    }
+
+    .avatargif img {
+        margin-top: 1.5em;
+    }
+}
+
+@media (max-width: 768px) {
+    #logox img {
+        position: relative;
+        object-position: center;
+        width: 30%;
+        height: 30%;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .filenm {
+        border-radius: 6px;
+        gap: 0.3em;
+        font-size: 10px;
+        padding: 10px 12px;
+        margin: 0;
+    }
+
+    .filenm span {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .backbutton span {
+        font-size: 10px;
+    }
+
+    .backbutton {
+        padding: 12px 14px;
+        border-radius: 6px;
+    }
+
+    .labels {
+        padding: 0 0 5px 0;
+        margin: 0;
+    }
+
+    p {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .uploadbutton {
+        padding: 8px 24px;
+        font-size: 14px;
+        font-weight: 300;
+    }
+
+    p.desc {
+        font-size: 6px;
+        line-height: 12px;
+    }
+
+    .valid {
+        padding-left: 5px;
+        font-size: 12px;
+    }
+
+    .labels p {
+        padding: 8px 0 8px 0;
+    }
+
+    #dataTable th,
+    #dataTable td {
+        font-size: 6px;
+        text-align: left;
+        padding: 1px;
+    }
+
+    .exportbutton {
+        margin-left: 17px;
+        border-radius: 5px;
+        padding: .8em 1em;
+        font-weight: 300;
+        font-size: 12px;
+    }
+
+    .avatargif img {
+        margin-top: 1.25em;
+    }
+}
+
+@media screen and (max-width: 576px) {
+
+    /* Styles for screens up to 576px wide */
+    .containerz {
+        flex-direction: column;
+    }
+
+    .left-column,
+    .right-column {
+        flex: 1;
+        width: 100%;
+    }
+
+    .left-column {
+        box-shadow: inset 0 15px 30px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+
+    .right-column {
+        border-radius: 20px;
+        flex: 1.2;
+    }
+
+    .filenm {
+        border-radius: 7px;
+        gap: 0.3em;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 8px 10px;
+        margin: 0;
+    }
+
+    .backbutton span {
+        font-size: 12px;
+    }
+
+    .backbutton {
+        padding: 8px 10px;
+        border-radius: 7px;
+    }
+
+    .labels {
+        padding: 0 0 5px 0;
+        margin: 0;
+    }
+
+    .uploadbutton {
+        padding: 6px 22px;
+        font-size: 12px;
+        font-weight: 300;
+    }
+
+    p.desc {
+        font-size: 4px;
+        text-align: left;
+        line-height: 10px;
+    }
+
+    .valid {
+        padding-left: 5px;
+        font-size: 10px;
+    }
+
+    .labels p {
+        padding: 8px 0 8px 0;
+    }
+
+    #dataTable th,
+    #dataTable td {
+        font-size: 6px;
+        text-align: left;
+        padding: 1px;
+    }
+
+    .exportbutton {
+        margin-left: 17px;
+        border-radius: 5px;
+        padding: .5em .8em;
+        font-weight: 300;
+        font-size: 10px;
+    }
+
+    .avatargif img {
+        margin-top: 1em;
+    }
+}
+
+p.desc {
+    font-size: 10px;
+    font-family: 'Poppins';
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+    line-height: 12px;
+    font-style: italic;
+}
+
+.fa-spinner {
+    font-size: 16px;
+}
+
+.avatargif {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatargif img {
+    margin-top: 3.5em;
+    width: 40%;
+    height: 40%;
+}
+
+.red-border {
+    border: 2px solid red;
+}
+
+.green-border {
+    border: 2px solid green;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.image-container:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltiptext {
+    font-size: 12px;
+    visibility: hidden;
+    width: 160px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 5px;
+    position: absolute;
+    z-index: 99;
+    bottom: 105%;
+    left: 50%;
+    margin-left: -80px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+.zoomed-image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.zoomed-image-container img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+@media (max-width: 576px) {
+    .zoomed-image-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 45%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        /* Optional: If you want to hide the scrollbar in Firefox */
+        scrollbar-width: none;
+    }
+}

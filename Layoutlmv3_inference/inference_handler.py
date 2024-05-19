@@ -131,14 +131,14 @@ class ModelHandler(object):
 
                 output_spans = []
                 for span in spans:
-                    if len(span) == 1:
-                        output_span = {"text": span[0]['text'],
+                    if span[0]['label'] in ['ITEMS', 'PRICE']:
+                        output_span = {"text": ' '.join([entity['text'] for entity in span]) + '|',
                                     "label": span[0]['label'],
                                     "words": [{
-                                        'id': span[0]['id'],
-                                        'box': span[0]['box'],
-                                        'text': span[0]['text']
-                                    }],
+                                        'id': entity['id'],
+                                        'box': entity['box'],
+                                        'text': entity['text']
+                                    } for entity in span]
                                     }
                     else:
                         output_span = {"text": ' '.join([entity['text'] for entity in span]),
@@ -148,7 +148,6 @@ class ModelHandler(object):
                                         'box': entity['box'],
                                         'text': entity['text']
                                     } for entity in span]
-
                                     }
                     output_spans.append(output_span)
                 docs.append({f'output': output_spans})
@@ -189,6 +188,10 @@ class ModelHandler(object):
 
             # Load the original inference output from the JSON file
             inference_out_list = json.loads(inference_out)
+            flattened_output_list = get_flattened_output(inference_out_list)
+            print('Ready for Annotation')
+            for i, flattened_output in enumerate(flattened_output_list):
+                annotate_image(data['image_path'][i], flattened_output)
 
             # Create the labeled directory if it doesn't exist
             labeled_dir = 'static/temp/labeled'

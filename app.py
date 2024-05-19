@@ -1,4 +1,6 @@
-from flask import Flask, request, render_template, jsonify, send_file, redirect, url_for, flash, send_from_directory, session
+
+# Dependencies
+from flask import Flask, request, render_template, jsonify, send_file, redirect, url_for, flash, send_from_directory, session, Response
 from PIL import Image, ImageDraw
 import torch
 from transformers import LayoutLMv2ForTokenClassification, LayoutLMv3Tokenizer
@@ -22,6 +24,8 @@ import signal
 import shutil
 from datetime import datetime
 import zipfile
+from pathlib import Path
+
 # LLM
 import argparse
 from asyncio.log import logger
@@ -29,18 +33,16 @@ from Layoutlmv3_inference.ocr import prepare_batch_for_inference
 from Layoutlmv3_inference.inference_handler import handle
 import logging
 import os
-import warnings
-
-# Ignore SourceChangeWarning
-warnings.filterwarnings("ignore", category=DeprecationWarning)
-# warnings.filterwarnings("ignore", category=SourceChangeWarning)
+import copy
 
 
-UPLOAD_FOLDER = 'static/temp/uploads'
+# Upload Folder
+UPLOAD_FOLDER = r'static/temp/uploads'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -59,8 +61,8 @@ def index():
         dt_string = now.strftime("%Y%m%d_%H%M%S")
 
         # Source folders
-        temp_folder = r'temp'
-        inferenced_folder = r'inferenced'
+        temp_folder = r'static/temp'
+        inferenced_folder = r'static/temp/inferenced'
 
         # Destination folder path
         destination_folder = os.path.join('output_folders', dt_string)  # Create a new folder with timestamp
@@ -81,7 +83,7 @@ def allowed_file(filename):
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_files():
-    UPLOAD_FOLDER = 'static/temp/uploads'
+    UPLOAD_FOLDER = r'static/temp/uploads'
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
     if request.method == 'POST':
@@ -100,12 +102,13 @@ def upload_files():
     return render_template('index.html')
 
 
+from pathlib import Path
 def make_predictions(image_paths):
-    temp = None
+    # temp = None
     try:
-        # For Windows OS
-        temp = pathlib.PosixPath  # Save the original state
-        pathlib.PosixPath = pathlib.WindowsPath  # Change to WindowsPath temporarily
+        # # For Windows OS
+        # temp = pathlib.PosixPath  # Save the original state
+        # pathlib.PosixPath = pathlib.WindowsPath  # Change to WindowsPath temporarily
         
         model_path = Path(r'model/export')
         learner = load_learner(model_path)
@@ -123,38 +126,76 @@ def make_predictions(image_paths):
             predicted_class_str = str(prediction_class)
             
             predictions.append(predicted_class_str)
+            
+            print(f"Prediction: {predictions}")
 
         return predictions
 
     except Exception as e:
-        return {"error": str(e)}
+        return {"error in make_predictions": str(e)}
         
-    finally:
-        pathlib.PosixPath = temp 
+    # finally:
+    #     pathlib.PosixPath = temp 
+
 
 @app.route('/predict/<filenames>', methods=['GET', 'POST'])
 def predict_files(filenames):
+    index_url = url_for('index')
+
     prediction_results = []
     image_paths = eval(filenames)  # Convert the filenames string back to a list
     
     for filename in image_paths:
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        folder_path = UPLOAD_FOLDER
+        destination_folder = r'static/temp/img_display'
+        if not os.path.exists(destination_folder):
+            os.makedirs(destination_folder)
+
+        # Get a list of all files in the source folder
+        files = os.listdir(folder_path)
+
+        # Loop through each file and copy it to the destination folder
+        for file in files:
+            # Construct the full path of the source file
+            source_file_path = os.path.join(folder_path, file)
+            
+            # Construct the full path of the destination file
+            destination_file_path = os.path.join(destination_folder, file)
+            
+            # Copy the file to the destination folder
+            shutil.copy(source_file_path, destination_file_path)
+        
         if os.path.exists(file_path):
             # Call make_predictions automatically
-            prediction_result = make_predictions([file_path])  # Pass file_path as a list
-            prediction_results.extend(prediction_result)  # Use extend to add elements of list to another list
-            print(image_paths)
-   
-    temp_folder = UPLOAD_FOLDER
-    return render_template('extractor.html', image_paths=image_paths, prediction_results = prediction_results, predictions=dict(zip(image_paths, prediction_results)))
+            prediction_result = make_predictions([file_path])
+            if isinstance(prediction_result, list) and len(prediction_result) > 0:
+                prediction_results.append(prediction_result[0])  # Append only the first prediction result
+            else:
+                print(f"Error making prediction for {file}: {prediction_result}")
+
+            prediction_results_copy = copy.deepcopy(prediction_results)
+
+            non_receipt_indices = []
+            for i, prediction in enumerate(prediction_results):
+                if prediction == 'non-receipt':
+                    non_receipt_indices.append(i)
+
+            # Delete images in reverse order to avoid index shifting
+            for index in non_receipt_indices[::-1]:
+                file_to_remove = os.path.join('static', 'temp', 'uploads', image_paths[index])
+                if os.path.exists(file_to_remove):
+                    os.remove(file_to_remove)
+                    
+    return render_template('extractor.html', index_url=index_url, image_paths=image_paths, prediction_results = prediction_results, predictions=dict(zip(image_paths, prediction_results_copy)))
 
     
     
-@app.route('/get_inference_image')
-def get_inference_image():
-    # Assuming the new image is stored in the 'inferenced' folder with the name 'temp_inference.jpg'
-    inferenced_image = 'inferenced/temp_inference.jpg'
-    return jsonify(updatedImagePath=inferenced_image), 200  # Return the image path with a 200 status code
+# @app.route('/get_inference_image')
+# def get_inference_image():
+#     # Assuming the new image is stored in the 'inferenced' folder with the name 'temp_inference.jpg'
+#     inferenced_image = 'static/temp/inferenced/temp_inference.jpg'
+#     return jsonify(updatedImagePath=inferenced_image), 200  # Return the image path with a 200 status code
     
 
 def process_images(model_path: str, images_path: str) -> None:
@@ -198,84 +239,84 @@ def stop_inference():
         logging.error(f"Error terminating run_inference process: {err}")
 
 # Define a function to replace all symbols with periods
-def replace_symbols_with_period(value):
-    # return re.sub(r'\W+', '.', str(value))
-    return value.replace(',', '.')
+def replace_symbols_with_period(text):
+    # Replace all non-alphanumeric characters with a period
+    text = re.sub(r'\W+', '.', text)
+    return text
 
-
-from itertools import zip_longest
 
 @app.route('/create_csv', methods=['GET'])
 def create_csv():
     try:
         # Path to the folder containing JSON files
         json_folder_path = r"static/temp/labeled"  # Change this to your folder path
-        
+
         # Path to the output CSV folder
-        output_folder_path = r"inferenced/csv_files"
+        output_folder_path = r"static/temp/inferenced/csv_files"
         os.makedirs(output_folder_path, exist_ok=True)
 
-        # Initialize an empty list to store all JSON data
-        all_data = []
-
+        column_order = [
+            'RECEIPTNUMBER', 'MERCHANTNAME', 'MERCHANTADDRESS',
+            'TRANSACTIONDATE', 'TRANSACTIONTIME', 'ITEMS',
+            'PRICE', 'TOTAL', 'VATTAX'
+        ]
+#  Save
         # Iterate through JSON files in the folder
         for filename in os.listdir(json_folder_path):
             if filename.endswith(".json"):
                 json_file_path = os.path.join(json_folder_path, filename)
 
-                with open(json_file_path, 'r') as file:
+                with open(json_file_path, 'r', encoding='utf-8') as file:
                     data = json.load(file)
-                    all_data.extend(data['output'])
+                    all_data = data.get('output', [])
 
-                # Creating a dictionary to store labels and corresponding texts for this JSON file
+                # Initialize a dictionary to store labels and corresponding texts for this JSON file
                 label_texts = {}
-                for item in data['output']:
+                for item in all_data:
                     label = item['label']
-                    text = item['text']
-                        
-                    if label not in label_texts:
-                        label_texts[label] = []
-                    label_texts[label].append(text)
-
-                # Order of columns as requested
-                column_order = [
-                    'RECEIPTNUMBER', 'MERCHANTNAME', 'MERCHANTADDRESS', 
-                    'TRANSACTIONDATE', 'TRANSACTIONTIME', 'ITEMS', 
-                    'PRICE', 'TOTAL', 'VATTAX'
-                ]
+                    text = item['text'].replace('|', '')  # Strip the pipe character
+                    if label == 'VATTAX' or label == 'TOTAL':
+                        text = replace_symbols_with_period(text.replace(' ', ''))  # Remove spaces and replace symbols with periods
+                    
+                    if label == 'TRANSACTIONTIME':
+                        # Concatenate all words for 'TRANSACTIONTIME' labels
+                        if label in label_texts:
+                            label_texts[label][0] += ": " + text  # Add a colon and a space before the text
+                        else:
+                            label_texts[label] = [text]
+                    else:
+                        if label in label_texts:
+                            label_texts[label].append(text)
+                        else:
+                            label_texts[label] = [text]
 
                 # Writing data to CSV file with ordered columns
                 csv_file_path = os.path.join(output_folder_path, os.path.splitext(filename)[0] + '.csv')
-                with open(csv_file_path, 'w', newline='') as csvfile:
+                with open(csv_file_path, 'w', encoding='utf-8') as csvfile:
                     csv_writer = csv.DictWriter(csvfile, fieldnames=column_order, delimiter=",")
-                    csv_writer.writeheader()
+                    if os.path.getsize(csv_file_path) == 0:
+                        csv_writer.writeheader()
 
-                    # Iterate through items and prices
-                    max_length = max(len(label_texts.get('ITEMS', [])), len(label_texts.get('PRICE', [])))
-                    for i in range(max_length):
-                        # Prepare data for each row
-                        items = label_texts.get('ITEMS', [])[i] if i < len(label_texts.get('ITEMS', [])) else ''
-                        prices = label_texts.get('PRICE', [])[i] if i < len(label_texts.get('PRICE', [])) else ''
+                    # Constructing rows for the CSV file
+                    num_items = len(label_texts.get('ITEMS', []))
+                    for i in range(num_items):
+                        row_data = {}
+                        for label in column_order:
+                            if label in label_texts:  # Check if the label exists in the dictionary
+                                if label == 'ITEMS' or label == 'PRICE':
+                                    if i < len(label_texts.get(label, [])):
+                                        row_data[label] = label_texts[label][i]
+                                    else:
+                                        row_data[label] = ''
+                                else:
+                                    row_data[label] = label_texts[label][0]
+                            else:
+                                row_data[label] = ''  # If the label does not exist, set the value to an empty string
+                        csv_writer.writerow(row_data)
 
-                        # Check if items and prices are separated by space
-                        if ' ' in items or ' ' in prices:
-                            item_list = items.split() if items else []
-                            price_list = prices.split() if prices else []
-
-                            # Create new rows for each combination of items and prices
-                            for item, price in zip(item_list, price_list):
-                                row_data = {label: replace_symbols_with_period(label_texts[label][i]) if label == 'ITEMS' else replace_symbols_with_period(label_texts[label][i]) for label in column_order}
-                                row_data['ITEMS'] = item
-                                row_data['PRICE'] = price
-                                csv_writer.writerow(row_data)
-                        else:
-                            # Write the row to CSV
-                            row_data = {label: replace_symbols_with_period(label_texts[label][i]) if i < len(label_texts[label]) else '' for label in column_order}
-                            csv_writer.writerow(row_data)
-
-        # Combining contents of CSV files into a single CSV file
-        output_file_path = r"inferenced/output.csv"
-        with open(output_file_path, 'w', newline='') as combined_csvfile:
+            # Combining contents of CSV files into a single CSV file
+        output_file_path = r"static/temp/inferenced/output.csv"
+        with open(output_file_path, 'w', newline='', encoding='utf-8') as combined_csvfile:
             combined_csv_writer = csv.DictWriter(combined_csvfile, fieldnames=column_order, delimiter=",")
             combined_csv_writer.writeheader()
 
@@ -285,7 +326,7 @@ def create_csv():
                     csv_file_path = os.path.join(output_folder_path, csv_filename)
 
                     # Read data from CSV file and write to the combined CSV file
-                    with open(csv_file_path, 'r') as csv_file:
+                    with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
                         csv_reader = csv.DictReader(csv_file)
                         for row in csv_reader:
                             combined_csv_writer.writerow(row)
@@ -293,24 +334,40 @@ def create_csv():
         return '', 204  # Return an empty response with a 204 status code
 
     except Exception as e:
-        # Handle exceptions here
-        return str(e), 500  # Return error message with a 500 status code if an exception occurs
+        print(f"An error occurred in create_csv: {str(e)}")
+        return None
+
+    except Exception as e:
+        print(f"An error occurred in create_csv: {str(e)}")
+        return None
+
+    except FileNotFoundError as e:
+        print(f"File not found error: {str(e)}")
+        return jsonify({'error': 'File not found.'}), 404
+    except json.JSONDecodeError as e:
+        print(f"JSON decoding error: {str(e)}")
+        return jsonify({'error': 'JSON decoding error.'}), 500
+    except csv.Error as e:
+        print(f"CSV error: {str(e)}")
+        return jsonify({'error': 'CSV error.'}), 500
+    except Exception as e:
+        print(f"An unexpected error occurred: {str(e)}")
+        return jsonify({'error': 'An unexpected error occurred.'}), 500
         
 @app.route('/get_data')
 def get_data():
-    return send_from_directory('inferenced','output.csv', as_attachment=False)
+    return send_from_directory('static/temp/inferenced','output.csv', as_attachment=False)
 
-from flask import jsonify
 
-@app.route('/download_csv', methods=['GET'])
+@app.route('/download_csv', methods=['POST'])
 def download_csv():
     try:
-        output_file_path = r"inferenced/output.csv"  # path to output CSV file
-        # Check if the file exists
-        if os.path.exists(output_file_path):
-            return send_file(output_file_path, as_attachment=True, download_name='output.csv')
-        else:
-            return jsonify({"error": "CSV file not found"})
+        csv_data = request.data.decode('utf-8')  # Get the CSV data from the request
+        return Response(
+            csv_data,
+            mimetype="text/csv",
+            headers={"Content-disposition":
+                    "attachment; filename=output.csv"})
     except Exception as e:
         return jsonify({"error": f"Download failed: {str(e)}"})
 

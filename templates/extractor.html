@@ -9,7 +9,9 @@
     <link rel="shortcut icon" href="/static/images/favicon.ico" title="Favicon" />
 
     <!-- Main CSS Files -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/extractor.css') }}">
 
     <!-- Color CSS -->
     <link rel="stylesheet" href="/static/css/color.css">
@@ -24,635 +26,10 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap"
+        rel="stylesheet">
     <title>ExCeipt | Extractor</title>
-    <style>
-        body {
-            background-color: #ddd;
-        }
-        
-        .containerz {
-            display: flex;
-            width: 100vw;
-            height: 100vh;
-        }
-        
-        .left-column {
-            padding-top: 100px;
-            flex: 2;
-            background-color: #ddd;
-            padding: 20px;
-            max-height: 100vh;
-            width: 100%;
-            max-width: 100%;
-            box-shadow: inset 0 15px 30px rgba(0, 0, 0, 0.1);
-            overflow-y: auto;
-        }
-        #canvas-container {
-            display: flex;
-            flex-wrap: wrap; /* Wrap items to next line when they exceed the container width */
-            justify-content: center; /* Center items horizontally */
-            gap: 10px; /* Add some space between images */
-            max-width: 100%; /* Ensure images don't exceed the container width */
-            margin-top: 70px;
-        }
-    
-        .image-container {
-            width: 200px; /* Set your desired width */
-            height: 300px; /* Set your desired height */
-            background-color: white; /* White background */
-            padding: 30px 30px 40px 30px; /* Add padding */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius:10px;
-        }
-        .image-container:hover{
-            transition: all 0.3s;
-            transform: translateY(1.5px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
-        }
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-        }
-        p.images-name {
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-            font-size: 10px;
-            margin: 5px 0 0 0 ;
-            text-align: center;
-            padding: 0;
-        }
-    
-        .right-column {
-            flex: 2;
-            background-color: #ffffff;
-            padding: 20px;
-            overflow-y: auto;
-            max-height: 100vh;
-        }
-        
-        .backbutton {
-            box-sizing: border-box;
-            border-radius: 10px;
-            color: var(--secondary-color);
-            padding: 1em 1.8em;
-            display: flex;
-            transition: 0.2s background;
-            align-items: center;
-            gap: 0.6em;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            border: none;
-            cursor: pointer;
-            position: fixed;
-            z-index: 999;
-        }
-        
-        .backbutton span {
-            text-decoration: none;
-            color: black;
-            font-family: 'Poppins', sans-serif, Arial, Helvetica;
-            font-size: 14px;
-            font-weight: 300;
-        }
-        
-        .backbutton:hover {
-            background: linear-gradient(45deg, #FF6347, #FFA07A);
-            transition: all .3s ease-in-out;
-        }
-        
-        .backbutton:hover span {
-            color: white;
-            transition: all .3s ease-in-out;
-        }
-        
-        .backbutton:hover i {
-            color: white;
-            transition: all .3s ease-in-out;
-        }
-        
-        .left-column h1 {
-            padding-top: 45px;
-        }
-        
-        #canvas-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        
-        #canvas {
-            cursor: grab;
-            user-select: none;
-        }
-        
-        #upload-input {
-            margin-top: 10px;
-            object-position: center;
-        }
-        
-        .bordered-table {
-            justify-content: center;
-            display: flex;
-            padding: 0px 30px;
-        }
-        
-        .bordered-table tbody td.full-width {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        
-        .bordered-table tbody td.full-width .label {
-            width: 100px;
-            text-align: right;
-            margin-right: 5px;
-        }
-        
-        .bordered-table tbody td .full-width input {
-            flex-grow: 1;
-        }
-        
-        .bordered-table tbody td.full-width {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-        }
-        
-        .bordered-table tbody td.full-width .label {
-            justify-self: end;
-        }
-        
-        #logox {
-            display: flex;
-            justify-content: center;
-        }
-        
-        #logox img {
-            position: relative;
-            object-position: center;
-            width: 25%;
-            height: 25%;
-            padding: 10px 10px 10px 10px;
-        }
-        
-        .receipt {
-            margin: 20px 20px;
-        }
-        
-        .receipt1 {
-            margin: 20px 20px;
-            font: 14px;
-        }
-        
-        .receipt1 table {
-            border-radius: 10px;
-        }
-        
-        .receipt h1 {
-            text-align: center;
-        }
-        
-        .receipt .details {
-            margin: 0px 0px 0px 15px;
-        }
-        
-        .receipt table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        .receipt table {
-            border-radius: 10px;
-        }
-        .receipt table th,
-        .receipt table td {
-            border: 1px solid #ccc;
-            padding: 5px;
-        }
-        
-        .receipt table th {
-            background-color: #f0f0f0;
-            text-align: left;
-            font-size:16px;
-            font-weight:500;
-            text-align:center;
-        }
-        
-        .receipt table td {
-            text-align:center;
-            font-size: 14px;
-            max-width: 150px; /* Set the maximum width */
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            padding: 0 20px ;
-        }
-        
-        #dataTable {
-            border-radius: 10px;
-            border-collapse: collapse;
-            width: 100%;
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-            overflow-x: auto;
-        }
-        
-        #receiptdiv {
-            display: none;
-        }
-        
-        #dataTable th,
-        #dataTable td {
-            font-size: 12px;
-            text-align: center;
-            padding: 3px;
-        }
-        
-        #downloadbutton {
-            display: none;
-        }
-        
-        #loadingSpinner {
-            position: relative;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #FF8B4A;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            display: none;
-            /* Hide initially */
-        }
-        
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        
-        #uploadbutton:disabled {
-            cursor: not-allowed;
-            background-color: #dddddd;
-        }
-        
-        .labels {
-            margin: 0 0 0 20px;
-            font-weight: 500;
-        }
-        
-        .labels p {
-            font-size: 14px;
-            padding-top: 8px;
-            line-height: 5px;
-            color: ccc;
-            padding: 8px 0 0 0;
-            text-align: left;
-        }
-        
-        #filenm {
-            position: relative;
-            z-index: 999;
-        }
-        
-        .valid {
-            padding-left: 8px;
-            font-weight: 300;
-            font-size: 14px;
-        }
-        
-        .details1 {
-            border-radius: 10px;
-            z-index: -1;
-        }
-        .details{
 
-        }
-        .exportbutton {
-            margin-right: 17px;
-            box-sizing: border-box;
-            border-radius: 10px;
-            padding: 1em 1.8em;
-            display: flex;
-            transition: 0.2s background;
-            align-items: center;
-            gap: 0.6em;
-            font-weight: 400;
-            background: linear-gradient(45deg, #FF6347, #FFA07A);
-            backdrop-filter: blur(10px);
-            border: 2px solid transparent;
-            color: white;
-            cursor: pointer;
-        }
-        
-        .exportbutton:hover {
-            border: 2px solid #FF8B4A;
-            background: #f5f5f5;
-            color: #000;
-            transition: all .3s ease-in-out;
-        }
-        
-        @media (max-width: 1024px) {
-            .filenm {
-                border-radius: 10px;
-                gap: 0.3em;
-                font-size: 9px;
-                padding: 9px 11px;
-                margin: 0;
-            }
-            .filenm span {
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
-            }
-            .backbutton span {
-                font-size: 9px;
-            }
-            .backbutton {
-                padding: 12px 14px;
-                border-radius: 10px;
-            }
-            .receipt {
-                margin: 15px 15px;
-            }
-            p {
-                padding: 10px;
-                font-size: 13px;
-            }
-            p.desc {
-                font-size: 8px;
-                text-align: left;
-            }
-            .labels {
-                text-align: left;
-            }
-            .labels p {
-                padding: 8px 0 8px 0;
-            }
-            .avatargif img {
-                margin-top: 1.5em;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            #logox img {
-                position: relative;
-                object-position: center;
-                width: 30%;
-                height: 30%;
-                padding: 10px 10px 10px 10px;
-            }
-            .filenm {
-                border-radius: 6px;
-                gap: 0.3em;
-                font-size: 10px;
-                padding: 10px 12px;
-                margin: 0;
-            }
-            .filenm span {
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
-            }
-            .backbutton span {
-                font-size: 10px;
-            }
-            .backbutton {
-                padding: 12px 14px;
-                border-radius: 6px;
-            }
-            .labels {
-                padding: 0 0 5px 0;
-                margin: 0;
-            }
-            p {
-                padding: 8px;
-                font-size: 12px;
-            }
-            .uploadbutton {
-                padding: 8px 24px;
-                font-size: 14px;
-                font-weight: 300;
-            }
-            p.desc {
-                font-size: 6px;
-                line-height: 12px;
-            }
-            .valid {
-                padding-left: 5px;
-                font-size: 12px;
-            }
-            .labels p {
-                padding: 8px 0 8px 0;
-            }
-            #dataTable th,
-            #dataTable td {
-                font-size: 6px;
-                text-align: left;
-                padding: 1px;
-            }
-            .exportbutton {
-                margin-left: 17px;
-                border-radius: 5px;
-                padding: .8em 1em;
-                font-weight: 300;
-                font-size: 12px;
-            }
-            .avatargif img {
-                margin-top: 1.25em;
-            }
-        }
-        
-        @media screen and (max-width: 576px) {
-            /* Styles for screens up to 576px wide */
-            .containerz {
-                flex-direction: column;
-            }
-            .left-column,
-            .right-column {
-                flex: 1;
-                width: 100%;
-            }
-            .left-column {
-                box-shadow: inset 0 15px 30px rgba(0, 0, 0, 0.1);
-                padding: 10px;
-            }
-            .right-column {
-                border-radius: 20px;
-                flex: 1.2;
-            }
-            .filenm {
-                border-radius: 7px;
-                gap: 0.3em;
-                font-size: 12px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                padding: 8px 10px;
-                margin: 0;
-            }
-            .backbutton span {
-                font-size: 12px;
-            }
-            .backbutton {
-                padding: 8px 10px;
-                border-radius: 7px;
-            }
-            .labels {
-                padding: 0 0 5px 0;
-                margin: 0;
-            }
-            .uploadbutton {
-                padding: 6px 22px;
-                font-size: 12px;
-                font-weight: 300;
-            }
-            p.desc {
-                font-size: 4px;
-                text-align: left;
-                line-height: 10px;
-            }
-            .valid {
-                padding-left: 5px;
-                font-size: 10px;
-            }
-            .labels p {
-                padding: 8px 0 8px 0;
-            }
-            #dataTable th,
-            #dataTable td {
-                font-size: 6px;
-                text-align: left;
-                padding: 1px;
-            }
-            .exportbutton {
-                margin-left: 17px;
-                border-radius: 5px;
-                padding: .5em .8em;
-                font-weight: 300;
-                font-size: 10px;
-            }
-            .avatargif img {
-                margin-top: 1em;
-            }
-        }
-        
-        p.desc {
-            font-size: 10px;
-            font-family: 'Poppins';
-            font-weight: 200;
-            margin: 0;
-            padding: 0;
-            line-height: 12px;
-            font-style: italic;
-        }
-        
-        .fa-spinner {
-            font-size: 16px;
-        }
-        
-        .avatargif {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .avatargif img {
-            margin-top: 3.5em;
-            width: 40%;
-            height: 40%;
-        }
-        .red-border {
-            border: 2px solid red;
-        }
-        
-        .green-border {
-            border: 2px solid green;
-        }
-
-        ::-webkit-scrollbar {
-            display: none;
-        }
-
-        .image-container:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .tooltiptext {
-            font-size: 12px;
-            visibility: hidden;
-            width: 160px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 8px;
-            padding: 5px;
-            position: absolute;
-            z-index: 99;
-            bottom: 105%;
-            left: 50%;
-            margin-left: -80px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .tooltiptext::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #333 transparent transparent transparent;
-        }
-        .zoomed-image-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-        }
-    
-        .zoomed-image-container img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-        }
-        @media (max-width: 576px) {
-            .zoomed-image-container {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 45%;
-                background-color: rgba(0, 0, 0, 0.8);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 999;
-            }
-        }
-        /* Optional: If you want to hide the scrollbar in Firefox */
-        scrollbar-width: none;
-    </style>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 </head>
 
@@ -662,23 +39,26 @@
     </div>
     <div class="containerz">
         <div class="left-column">
-            <button class="backbutton" id="submitButton" onclick="window.location.href='{{ url_for('index') }}'">
+            <button class="backbutton" id="submitButton" onclick="window.location.href='{{ index_url }}'">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Back</span>
             </button>
             <div id="canvas-container">
                 {% if image_paths %}
-                    {% for image_path, prediction_results in predictions.items() %}
-                        <div class="image-container {% if prediction_results == 'non-receipt' %}red-border{% elif prediction_results == 'receipt' %}green-border{% endif %}">
-                            <div class="tooltiptext">Click to view fullscreen</div>
-                            <img src="{{ url_for('static', filename='temp/uploads/' + image_path) }}" id="my-image" alt="uploads" />
-                            <div class="image-name">
-                                <p class="images-name">{{image_path}}</p>
-                            </div>
-                        </div>
-                    {% endfor %}
+                {% for image_path, prediction_results_copy in predictions.items() %}
+                <div
+                    class="image-container {% if prediction_results_copy == 'non-receipt' %}red-border{% elif prediction_results_copy == 'receipt' %}green-border{% endif %}">
+                    <div class="tooltiptext">Click to view fullscreen</div>
+                    <img src="{{ url_for('static', filename='temp/img_display/' + image_path) }}" id="my-image"
+                        alt="uploads"
+                        data-img-path="{{ url_for('static', filename='temp/img_display/' + image_path) }}" />
+                    <div class="image-name">
+                        <p class="images-name">{{image_path}}</p>
+                    </div>
+                </div>
+                {% endfor %}
                 {% else %}
-                    <p>No files uploaded.</p>
+                <p>No files uploaded.</p>
                 {% endif %}
             </div>
         </div>
@@ -692,44 +72,50 @@
             <hr style="color: #ccc; width:95%; opacity:0.35;">
             <div class="labels" style="margin: 0 0 0 20px;">
                 <p>Receipt Verification</p>
-                <p class="desc">Verify receipt details attentively, acknowledging occasional misclassification, which may arise from variations in image quality or format.</p>
+                <p class="desc">Verify receipt details attentively, acknowledging occasional misclassification, which
+                    may arise from variations in image quality or format.</p>
             </div>
             <div class="receipt">
-            <table>
-                <thead>
-                    <tr>
-                        <th>File Name</th>
-                        <th>Prediction Result</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for image_path, prediction_results in predictions.items() %}
-                    <tr>
-                        <td>{{ image_path }}</td>
-                        <td>
-                            <div class="details">
-                                <div style="display: flex; align-items: center; justify-content: center;">
-                                    {% if prediction_results.lower() == 'receipt' %}
-                                    <lord-icon src="https://cdn.lordicon.com/lomfljuq.json" trigger="in" delay="1500" colors="primary:#16c72e" state="morph-check-in-1" style="width:25px;height:25px">
-                                    </lord-icon>
-                                    <p class="valid">Valid Receipt</p>
-                                    {% else %}
-                                    <lord-icon src="https://cdn.lordicon.com/zxvuvcnc.json" trigger="in" delay="1500" state="morph-cross-in" colors="primary:#e83a30" style="width:25px;height:25px">
-                                    </lord-icon>
-                                    <p class="valid">Not a Receipt</p>
-                                    {% endif %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>File Name</th>
+                            <th>Prediction Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for image_path, prediction_results_copy in predictions.items() %}
+                        <tr>
+                            <td>{{ image_path }}</td>
+                            <td>
+                                <div class="details">
+                                    <div style="display: flex; align-items: center; justify-content: center;">
+                                        {% if prediction_results_copy.lower() == 'receipt' %}
+                                        <lord-icon src="https://cdn.lordicon.com/lomfljuq.json" trigger="in"
+                                            delay="1500" colors="primary:#16c72e" state="morph-check-in-1"
+                                            style="width:25px;height:25px">
+                                        </lord-icon>
+                                        <p class="valid">Valid Receipt</p>
+                                        {% else %}
+                                        <lord-icon src="https://cdn.lordicon.com/zxvuvcnc.json" trigger="in"
+                                            delay="1500" state="morph-cross-in" colors="primary:#e83a30"
+                                            style="width:25px;height:25px">
+                                        </lord-icon>
+                                        <p class="valid">Not a Receipt</p>
+                                        {% endif %}
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
             <hr style="color: #ccc; width:95%; opacity:0.35;">
             <div class="labels" style="margin: 0 0 0 20px;">
                 <p>Text Extraction</p>
-                <p class="desc">Ensure optimal text extraction accuracy from receipts by making sure that the receipt image is clear, well-lit, and after extraction review the extracted text and edit.</p>
+                <p class="desc">Ensure optimal text extraction accuracy from receipts by making sure that the receipt
+                    image is clear, well-lit, and after extraction review the extracted text and edit.</p>
             </div>
             <div style="text-align: center; margin-top: 25px;">
                 <button id="uploadbutton" class="uploadbutton" type="submit">
@@ -764,9 +150,10 @@
 
             <div style="text-align: center; display: none; justify-content: center;" id="downloadbutton">
                 <a href="{{ url_for('download_csv') }}">
-                    <button class="exportbutton" type="submit"><i class="fa-solid fa-download"></i>Download CSV</button>
+                    <button id="downloadButton" class="exportbutton" type="submit"><i
+                            class="fa-solid fa-download"></i>Download CSV</button>
                 </a>
-                <button class="exportbutton" onclick="window.location.href='{{ url_for('index') }}'">
+                <button class="exportbutton" onclick="window.location.href='{{ index_url }}'">
                     <span id="uploadIcon"><i class="fas fa-upload"></i></span>
                     <span>Upload again</span>
                 </button>
@@ -777,14 +164,16 @@
         </div>
         <a href="https://lordicon.com/" hidden>Icons by Lordicon.com</a>
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            const index_url = '{{ index_url }}';  // Replace with the actual value if it's not supposed to be a template variable
+
+            document.addEventListener('DOMContentLoaded', function () {
                 const dataTable = document.getElementById('receiptdiv');
                 const loadingSpinner = document.getElementById('loadingIcon');
                 const extractingText = document.getElementById('extractingText');
                 const runInferenceButton = document.getElementById('uploadbutton');
                 const exportCSVButton = document.getElementById('downloadbutton');
 
-                document.getElementById('uploadbutton').addEventListener('click', function() {
+                document.getElementById('uploadbutton').addEventListener('click', function () {
                     loadingSpinner.style.display = 'inline-block'; // Show loading spinner
                     extractingText.textContent = 'Extracting...'; // Change text to "Extracting..."
                     runInferenceButton.disabled = true;
@@ -802,24 +191,42 @@
                     // Show the table when data is updated
                     dataTable.style.display = 'table';
                 }
+                const imageElement = document.getElementById('my-image'); // replace 'my-image' with the id of your image element
+
 
                 async function runInference() {
                     await fetch('/run_inference');
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         loadingSpinner.style.display = 'none';
                         runInferenceButton.style.display = 'none';
                         exportCSVButton.style.display = 'flex';
+                        var imageElements = document.querySelectorAll('[data-img-path]');
 
+                        // Iterate over each image
+                        imageElements.forEach(function (imageElement) {
+                            var imagePath = imageElement.dataset.imgPath;
+                            // Remove the 'temp/img_display/' part from the imagePath
+                            // var newImagePath = imagePath.replace('temp/img_display/', '');
+                            // Update the image source
+                            imageElement.src = imagePath + "_inference.jpg";
+
+                            // Add an error handler
+                            imageElement.onerror = function () {
+                                // Hide the image's container if the image fails to load
+                                this.parentElement.style.display = 'none';
+                            };
+                        });
                         getData();
                     }, 500);
                 }
+
 
                 function updateTable(data) {
                     Papa.parse(data, {
                         header: true,
                         skipEmptyLines: true,
-                        complete: function(results) {
+                        complete: function (results) {
                             const tbody = document.querySelector('#dataTable tbody');
                             tbody.innerHTML = ''; // Clear existing rows
 
@@ -853,7 +260,44 @@
                 }
 
             });
+
+            document.querySelector('#downloadButton').addEventListener('click', function (event) {
+                event.preventDefault();  // Prevent the default action
+
+                const tbody = document.querySelector('#dataTable tbody');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+
+                // Define your headers
+                const headers = ['RECEIPTNUMBER', 'MERCHANTNAME', 'MERCHANTADDRESS', 'TRANSACTIONDATE', 'TRANSACTIONTIME', 'ITEMS', 'PRICE', 'TOTAL', 'VATTAX'];
+
+                // Convert the content to CSV format
+                const csvData = [headers.join(',')].concat(rows.map(row => {
+                    const cells = Array.from(row.querySelectorAll('td'));
+                    return cells.map(cell => cell.textContent.replace(/,/g, '.')).join(',');
+                })).join('\n');
+
+                // Send a POST request to the server with the CSV data
+                fetch(index_url + 'download_csv', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/csv'
+                    },
+                    body: csvData
+                })
+                    .then(response => response.blob())
+                    .then(blob => {
+                        // Create a Blob URL and initiate the download
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'data.csv';
+                        a.click();
+                    });
+            });
         </script>
+
+
+
         <!-- Include JavaScript resources -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
         <script src="/static/js/jquery.1.8.3.min.js"></script>

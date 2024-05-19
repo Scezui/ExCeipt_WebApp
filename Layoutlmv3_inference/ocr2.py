@@ -7,6 +7,7 @@ import requests
 import traceback
 import tempfile
 
+FLASK_DEBUG=1
 from PIL import Image
 
 def preprocess_image(image_path, max_file_size_mb=1, target_file_size_mb=0.5):
@@ -75,8 +76,41 @@ def enhance_txt(img, intensity_increase=20, bilateral_filter_diameter=9, bilater
     img = cv2.bilateralFilter(img, bilateral_filter_diameter, bilateral_filter_sigma_color, bilateral_filter_sigma_space)
 
     _, binary = cv2.threshold(blurred, threshold, 255, cv2.THRESH_BINARY)
-    return binary
 
+    # Find contours in the edged image, keep only the largest ones, and initialize our screen contour
+    contours, _ = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    contours = sorted(contours, key = cv2.contourArea, reverse = True)[:5]
+
+    # Initialize a variable to hold the screen contour
+    screenContour = None
+
+    # Loop over the contours
+    for c in contours:
+        # Approximate the contour
+        peri = cv2.arcLength(c, True)
+        approx = cv2.approxPolyDP(c, 0.02 * peri, True)
+
+        # If our approximated contour has four points, then we can assume that we have found our screen
+        if len(approx) == 4:
+            screenContour = approx
+            break
+
+    # If no contour is found or the contour is small, use the whole image
+    if screenContour is None or cv2.contourArea(screenContour) < 500:
+        screenContour = np.array([[[0, 0]], [[w-1, 0]], [[w-1, h-1]], [[0, h-1]]])
+
+    # Get the bounding rectangle around the contour
+    x, y, w, h = cv2.boundingRect(screenContour)
+
+    # Check if the bounding rectangle is within the image boundaries
+    if x >= 0 and y >= 0 and x + w <= img.shape[1] and y + h <= img.shape[0]:
+        # Crop the image using the bounding rectangle
+        cropped_img = img[y:y+h, x:x+w]
+    else:
+        print("Bounding rectangle is out of image boundaries")
+        cropped_img = img
+
+    return cropped_img
 
 def run_tesseract_on_preprocessed_image(preprocessed_image, image_path):
     try:
@@ -92,7 +126,7 @@ def run_tesseract_on_preprocessed_image(preprocessed_image, image_path):
         url = "https://api.ocr.space/parse/image"
 
         # Define the API key and the language
-        api_key = os.getenv("ocr_space")
+        api_key = "K88232854988957"  # Replace with your actual OCR Space API key
         language = "eng"
 
         # Save the preprocessed image
