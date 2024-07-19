@@ -25,6 +25,10 @@ import shutil
 from datetime import datetime
 import zipfile
 from pathlib import Path
+import platform
+import pathlib
+from pathlib import WindowsPath
+
 
 # LLM
 import argparse
@@ -102,13 +106,11 @@ def upload_files():
     return render_template('index.html')
 
 
-from pathlib import Path
 def make_predictions(image_paths):
-    # temp = None
     try:
-        # # For Windows OS
-        # temp = pathlib.PosixPath  # Save the original state
-        # pathlib.PosixPath = pathlib.WindowsPath  # Change to WindowsPath temporarily
+        if platform.system() == 'Windows':
+            temp = pathlib.PosixPath  # Save the original state
+            pathlib.PosixPath = pathlib.WindowsPath  # Change to WindowsPath temporarily
         
         model_path = Path(r'model/export')
         learner = load_learner(model_path)
@@ -133,9 +135,10 @@ def make_predictions(image_paths):
 
     except Exception as e:
         return {"error in make_predictions": str(e)}
-        
-    # finally:
-    #     pathlib.PosixPath = temp 
+    
+    finally:
+        if platform.system() == 'Windows':
+            pathlib.WindowsPath = temp
 
 
 @app.route('/predict/<filenames>', methods=['GET', 'POST'])
@@ -188,14 +191,6 @@ def predict_files(filenames):
                     os.remove(file_to_remove)
                     
     return render_template('extractor.html', index_url=index_url, image_paths=image_paths, prediction_results = prediction_results, predictions=dict(zip(image_paths, prediction_results_copy)))
-
-    
-    
-# @app.route('/get_inference_image')
-# def get_inference_image():
-#     # Assuming the new image is stored in the 'inferenced' folder with the name 'temp_inference.jpg'
-#     inferenced_image = 'static/temp/inferenced/temp_inference.jpg'
-#     return jsonify(updatedImagePath=inferenced_image), 200  # Return the image path with a 200 status code
     
 
 def process_images(model_path: str, images_path: str) -> None:
@@ -237,6 +232,7 @@ def stop_inference():
         logging.warning("run_inference process not found.")
     except Exception as err:
         logging.error(f"Error terminating run_inference process: {err}")
+
 
 # Define a function to replace all symbols with periods
 def replace_symbols_with_period(text):
@@ -370,7 +366,6 @@ def download_csv():
                     "attachment; filename=output.csv"})
     except Exception as e:
         return jsonify({"error": f"Download failed: {str(e)}"})
-
 
 
 if __name__ == '__main__':
