@@ -46,11 +46,11 @@ machine learning, streamlining the bookkeeping process.
     pip install -r requirements.txt
     ```
 6. Add API key
-   ```
-   python create_api.py
-   ```
-   Enter the API key you created from OCR.Space
    
+    Enter the API key you created from OCR.Space
+    ```
+    python create_api.py
+    ```
 8. Run the web application
     ```
     flask run
