@@ -24,11 +24,6 @@ import signal
 import shutil
 from datetime import datetime
 import zipfile
-from pathlib import Path
-import platform
-import pathlib
-from pathlib import WindowsPath
-
 
 # LLM
 import argparse
@@ -38,10 +33,17 @@ from Layoutlmv3_inference.inference_handler import handle
 import logging
 import os
 import copy
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module='torch.serialization', lineno=1113)
+warnings.filterwarnings("ignore")
+from torch.serialization import SourceChangeWarning
+
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=SourceChangeWarning)
 
 
 # Upload Folder
-UPLOAD_FOLDER = r'static/temp/uploads'
+UPLOAD_FOLDER = 'static/temp/uploads'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
@@ -81,18 +83,17 @@ def index():
     
 
 def allowed_file(filename):
-    return '.' in filename and \
-        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
+    # Assuming this function checks the file extension and returns True if allowed
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'jpg', 'jpeg', 'png'}
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_files():
-    UPLOAD_FOLDER = r'static/temp/uploads'
+    UPLOAD_FOLDER = app.config['UPLOAD_FOLDER']
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
     if request.method == 'POST':
         if 'files[]' not in request.files:
-            resp = jsonify({'message' : 'No file part in the request'})
+            resp = jsonify({'message': 'No file part in the request'})
             resp.status_code = 400
             return resp
         files = request.files.getlist('files[]')
@@ -100,15 +101,22 @@ def upload_files():
         for file in files:
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                file.save(os.path.join(UPLOAD_FOLDER, filename))
                 filenames.append(filename)
+        if not filenames:  # Check if no valid files were added
+            resp = jsonify({'message': 'No valid files uploaded. Please upload files with allowed extensions.'})
+            resp.status_code = 400
+            return resp
         return redirect(url_for('predict_files', filenames=filenames))
     return render_template('index.html')
 
 
 def make_predictions(image_paths):
+    import platform
+    temp = None
     try:
         if platform.system() == 'Windows':
+            # For Windows OS
             temp = pathlib.PosixPath  # Save the original state
             pathlib.PosixPath = pathlib.WindowsPath  # Change to WindowsPath temporarily
         
@@ -128,17 +136,15 @@ def make_predictions(image_paths):
             predicted_class_str = str(prediction_class)
             
             predictions.append(predicted_class_str)
-            
-            print(f"Prediction: {predictions}")
+        
+        if platform.system() == 'Windows':
+            pathlib.PosixPath = temp 
 
         return predictions
 
     except Exception as e:
         return {"error in make_predictions": str(e)}
     
-    finally:
-        if platform.system() == 'Windows':
-            pathlib.WindowsPath = temp
 
 
 @app.route('/predict/<filenames>', methods=['GET', 'POST'])
@@ -171,12 +177,8 @@ def predict_files(filenames):
         
         if os.path.exists(file_path):
             # Call make_predictions automatically
-            prediction_result = make_predictions([file_path])
-            if isinstance(prediction_result, list) and len(prediction_result) > 0:
-                prediction_results.append(prediction_result[0])  # Append only the first prediction result
-            else:
-                print(f"Error making prediction for {file}: {prediction_result}")
-
+            prediction_result = make_predictions([file_path])  # Pass file_path as a list
+            prediction_results.append(prediction_result[0])  # Append only the first prediction result
             prediction_results_copy = copy.deepcopy(prediction_results)
 
             non_receipt_indices = []
@@ -190,7 +192,15 @@ def predict_files(filenames):
                 if os.path.exists(file_to_remove):
                     os.remove(file_to_remove)
                     
+
     return render_template('extractor.html', index_url=index_url, image_paths=image_paths, prediction_results = prediction_results, predictions=dict(zip(image_paths, prediction_results_copy)))
+
+    
+# @app.route('/get_inference_image')
+# def get_inference_image():
+#     # Assuming the new image is stored in the 'inferenced' folder with the name 'temp_inference.jpg'
+#     inferenced_image = 'static/temp/inferenced/temp_inference.jpg'
+#     return jsonify(updatedImagePath=inferenced_image), 200  # Return the image path with a 200 status code
     
 
 def process_images(model_path: str, images_path: str) -> None:
@@ -200,12 +210,14 @@ def process_images(model_path: str, images_path: str) -> None:
         inference_batch = prepare_batch_for_inference(images_path)
         context = {"model_dir": model_path}
         handle(inference_batch, context)
-    except Exception as err:
+    except Exception as e:
+        print("No Internet connection.")
         os.makedirs('log', exist_ok=True)
         logging.basicConfig(filename='log/error_output.log', level=logging.ERROR,
                             format='%(asctime)s %(levelname)s %(name)s %(message)s')
         logger = logging.getLogger(__name__)
         logger.error(err)
+        return redirect(url_for('index'))
 
 @app.route('/run_inference', methods=['GET'])
 def run_inference():
@@ -232,7 +244,6 @@ def stop_inference():
         logging.warning("run_inference process not found.")
     except Exception as err:
         logging.error(f"Error terminating run_inference process: {err}")
-
 
 # Define a function to replace all symbols with periods
 def replace_symbols_with_period(text):
@@ -331,24 +342,8 @@ def create_csv():
 
     except Exception as e:
         print(f"An error occurred in create_csv: {str(e)}")
-        return None
+        return render_template('extractor.html', error_message=str(e))
 
-    except Exception as e:
-        print(f"An error occurred in create_csv: {str(e)}")
-        return None
-
-    except FileNotFoundError as e:
-        print(f"File not found error: {str(e)}")
-        return jsonify({'error': 'File not found.'}), 404
-    except json.JSONDecodeError as e:
-        print(f"JSON decoding error: {str(e)}")
-        return jsonify({'error': 'JSON decoding error.'}), 500
-    except csv.Error as e:
-        print(f"CSV error: {str(e)}")
-        return jsonify({'error': 'CSV error.'}), 500
-    except Exception as e:
-        print(f"An unexpected error occurred: {str(e)}")
-        return jsonify({'error': 'An unexpected error occurred.'}), 500
         
 @app.route('/get_data')
 def get_data():

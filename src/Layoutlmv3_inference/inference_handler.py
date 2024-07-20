@@ -59,7 +59,9 @@ class ModelHandler(object):
             model = load_model(model_dir)
             return model
         except Exception as e:
-            logger.error(f"Error loading LayoutLMv3 model: {str(e)}")
+            from pathlib import Path
+            model_dir = Path(model_dir)
+            logger.error(f"Error loading LayoutLMv3 model from {model_dir.absolute()}: {str(e)}")
             self.error = str(e)
             return None
 

@@ -6,6 +6,7 @@ import json
 import requests
 import traceback
 import tempfile
+from dotenv import load_dotenv
 
 from PIL import Image
 
@@ -90,6 +91,8 @@ def run_tesseract_on_preprocessed_image(preprocessed_image, image_path):
 
         # Define the OCR API endpoint
         url = "https://api.ocr.space/parse/image"
+
+        load_dotenv()
 
         # Define the API key and the language
         api_key = os.getenv("ocr_space")

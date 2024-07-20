@@ -16,3 +16,4 @@ numpy==1.24.3
 # datasets==2.14.6
 datasets @ git+https://github.com/huggingface/datasets.git@a1e1867e932f14233244fb25713f3c94c46ff50a
 Werkzeug==2.3.7
+python-dotenv==1.0.1
