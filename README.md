@@ -2,7 +2,7 @@
 This project aims to automate bookkeeping by developing a web application that extracts information from receipts. The system scans an image to determine if it is a receipt. If confirmed, it uses the LayoutLMv3 model to automatically extract and categorize the text. The extracted information is then saved to a CSV file for further analysis and record-keeping.
 
 # Code Example
-### Upload and Predict
+### Import to Export
 
 1. **Upload Files**: Users can upload multiple receipt images.
 2. **Make Predictions**: The application processes the images, makes predictions, and filters non-receipt images.
