@@ -9,45 +9,47 @@ machine learning, streamlining the bookkeeping process.
 
 # Installation
 ### Prerequisites
-- Git: Ensure you have Git installed on your machine. You can download it from [here](https://git-scm.com/downloads).
-- Git LFS: Ensure Git LFS (Large File Storage) is installed. You can download it from [here](https://git-lfs.com/).
-- Python 3.11.4: Make sure you have Python 3.11.4 installed. You can download it from [here](https://www.python.org/downloads/release/python-3114/).
-- Conda: If you prefer using Conda for environment management, ensure it is installed. You can download it from [here](https://www.anaconda.com/download).
+- Git: Ensure you have Git installed on your machine. You can download it from [here.](https://git-scm.com/downloads).
+- Git LFS: Ensure Git LFS (Large File Storage) is installed. You can download it from [here.](https://git-lfs.com/).
+- Python 3.11.4: Make sure you have Python 3.11.4 installed. You can download it from [here.](https://www.python.org/downloads/release/python-3114/).
+- Conda: If you prefer using Conda for environment management, ensure it is installed. You can download it from [here.](https://www.anaconda.com/download).
+- OCR.Space API key: Create your free API key [here.](https://ocr.space/ocrapi)
 
 ### Steps to Set Up the Project
 1. Clone the Repository
-```
-  git clone https://github.com/Scezui/ExCeipt_WebApp.git
-  cd ExCeipt_Webapp
-```
+    ```
+      git clone https://github.com/Scezui/ExCeipt_WebApp.git
+      cd ExCeipt_Webapp
+    ```
 2. Pull LFS files
-```
-  git lfs pull
-```
+    ```
+      git lfs pull
+    ```
 3. Create a new environment
-Using Conda:
-```
-  conda create --name myenv python=3.11.4
-  conda activate myenv
-```
-Using venv:
-```
-  python -m venv myenv
-  source myenv/bin/activate  # On Windows, use `myenv\Scripts\activate`
-```
+
+    Using _conda_:
+    ```
+    conda create --name myenv python=3.11.4
+    conda activate myenv
+    ```
+    Using _venv_:
+    ```
+    python -m venv myenv
+    source myenv/bin/activate  # On Windows, use `myenv\Scripts\activate`
+    ```
 4. Navigate to the source directory
-```
-  cd src
-```
+    ```
+    cd src
+    ```
 6. Install Dependencies
-```
-  pip install -r requirements.txt
-```
+    ```
+    pip install -r requirements.txt
+    ```
 6. Run the web application
-```
-  flask run
-```
-OR you can access a working web application [here](innovex-exceipt.hf.space)
+    ```
+    flask run
+    ```
+OR you can access a working web application [here.](innovex-exceipt.hf.space)
 
 
 # API Reference
