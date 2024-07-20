@@ -41,11 +41,17 @@ machine learning, streamlining the bookkeeping process.
     ```
     cd src
     ```
-6. Install Dependencies
+5. Install Dependencies
     ```
     pip install -r requirements.txt
     ```
-6. Run the web application
+6. Add API key
+   ```
+   python create_api.py
+   ```
+   Enter the API key you created from OCR.Space
+   
+8. Run the web application
     ```
     flask run
     ```
