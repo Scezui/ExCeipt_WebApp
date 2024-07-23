@@ -16,11 +16,10 @@ import shutil
 import json
 import csv
 from werkzeug.utils import secure_filename
-from fastai.vision import load_learner, open_image
+... # Import other dependencies
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/temp/uploads'
-app.config['SECRET_KEY'] = 'supersecretkey'
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
