@@ -74,7 +74,7 @@ machine learning, streamlining the bookkeeping process.
 
 # Installation
 ### Prerequisites
-- Git: Ensure you have Git installed on your machine. You can download it from [here.](https://git-scm.com/downloads).
+- **Git**: Ensure you have Git installed on your machine. You can download it from [here.](https://git-scm.com/downloads).
 - Git LFS: Ensure Git LFS (Large File Storage) is installed. You can download it from [here.](https://git-lfs.com/).
 - Python 3.11.4: Make sure you have Python 3.11.4 installed. You can download it from [here.](https://www.python.org/downloads/release/python-3114/).
 - Conda: If you prefer using Conda for environment management, ensure it is installed. You can download it from [here.](https://www.anaconda.com/download).
